@@ -6,9 +6,11 @@ namespace TaskManagment
 {
     public class Task : MonoBehaviour, IInteractable
     {
-        private TaskManager _manager;
+        [SerializeField] private SpriteRenderer _sprite;
         
         [SerializeField] private bool _isWorking = true;
+
+        private TaskManager _manager;
 
         public bool IsWorking
         {
@@ -16,6 +18,7 @@ namespace TaskManagment
             set
             {
                 _isWorking = value;
+                _sprite.enabled = !_isWorking;
                 TaskContainer.OnUpdateAction?.Invoke(this);
             }
         }
@@ -26,6 +29,7 @@ namespace TaskManagment
         {
             _manager = TaskManager.Instance;
             _manager.container.UpdateTask(this);
+            _sprite.enabled = !IsWorking;
         }
 
         public void Break()
