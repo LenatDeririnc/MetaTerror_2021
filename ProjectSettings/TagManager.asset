@@ -15,8 +15,8 @@ TagManager:
   - 
   - 
   - 
-  - 
-  - 
+  - OnlyInFirstPerson
+  - OnlyInThirdPerson
   - 
   - 
   - 
