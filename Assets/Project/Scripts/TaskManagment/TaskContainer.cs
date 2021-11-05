@@ -29,7 +29,7 @@ namespace TaskManagment
         {
             var task = workingTasks.ElementAt(index);
             task.Break();
-            Debug.Log(index);
+            Debug.Log($"{task.name} has broken");
         }
         
         public void RemoveTask(Task task)

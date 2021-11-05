@@ -511,8 +511,6 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   organizer: {fileID: 5152404494246438333}
-  movement: {fileID: 3996925802348566694, guid: d04902f11fe1a35409fd7431259d6667, type: 3}
-  look: {fileID: -1903137037642624798, guid: d04902f11fe1a35409fd7431259d6667, type: 3}
 --- !u!1 &5152404494936406523
 GameObject:
   m_ObjectHideFlags: 0

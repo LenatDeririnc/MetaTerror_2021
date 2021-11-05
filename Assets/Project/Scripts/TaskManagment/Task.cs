@@ -1,9 +1,10 @@
 ﻿using System;
+using Player.Interfaces;
 using UnityEngine;
 
 namespace TaskManagment
 {
-    public class Task : MonoBehaviour
+    public class Task : MonoBehaviour, IInteractable
     {
         private TaskManager _manager;
         
@@ -27,8 +28,18 @@ namespace TaskManagment
 
         public void Fix()
         {
+            if (_isWorking)
+                return;
+            
+            print($"{name} fixed");
+            
             _isWorking = true;
             OnUpdateAction(this);
+        }
+
+        public void OnInteract()
+        {
+            Fix();
         }
     }
 }
