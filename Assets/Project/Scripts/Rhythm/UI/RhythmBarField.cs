@@ -1,5 +1,4 @@
-﻿using System;
-using System.Collections.Generic;
+﻿using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.Pool;
 using UnityEngine.UI;
@@ -8,7 +7,7 @@ namespace Rhythm.UI
 {
     public class RhythmBarField : MonoBehaviour
     {
-        public int channel;
+        public DrumChannel channel;
 
         public Image background;
         public ParticleSystem hitParticles;

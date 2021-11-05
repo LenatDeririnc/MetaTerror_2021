@@ -1,0 +1,21 @@
+fileFormatVersion: 2
+guid: cd1815a349f22fc47b6987f9179ab2e7
+ScriptedImporter:
+  internalIDToNameTable: []
+  externalObjects: {}
+  serializedVersion: 2
+  userData: 
+  assetBundleName: 
+  assetBundleVariant: 
+  script: {fileID: 11500000, guid: 9743f44eb30a454d9a0a5ea55d9029e2, type: 3}
+  remaps:
+  - midiNote: 36
+    gameChannel: 0
+  - midiNote: 40
+    gameChannel: 1
+  - midiNote: 52
+    gameChannel: 2
+  - midiNote: 59
+    gameChannel: 3
+  goodAudioClip: {fileID: 8300000, guid: d4a362a96755ae24396e3b19ee8996bf, type: 3}
+  badAudioClip: {fileID: 8300000, guid: d4a362a96755ae24396e3b19ee8996bf, type: 3}

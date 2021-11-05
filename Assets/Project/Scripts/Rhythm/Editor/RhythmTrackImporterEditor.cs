@@ -45,7 +45,7 @@ namespace Rhythm
                 }
                 else
                 {
-                    names.Append(number + " (" + note.NoteName + ")\n");
+                    names.Append(number + " (" + note.NoteName + "," + note.Octave + ")\n");
                 }
             }
 

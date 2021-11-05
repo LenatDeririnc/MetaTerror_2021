@@ -11,6 +11,8 @@ public delegate void OnNoteHitListener(RhythmTrack.Note note, float score);
 
 public class RhythmGamePlayer : MonoBehaviour
 {
+    public static RhythmGamePlayer Instance { get; private set; }
+    
     public RhythmTrack startTrack;
     public AudioSource goodTrackSource;
     public AudioSource badTrackSource;
@@ -37,6 +39,11 @@ public class RhythmGamePlayer : MonoBehaviour
     private readonly List<DisplayNote> currentDisplayNotes = new();
     private PlayStats stats;
 
+    private void Awake()
+    {
+        Instance = this;
+    }
+
     public void PlayTrack(RhythmTrack track)
     {
         DOTween.Kill(this);
@@ -61,13 +68,13 @@ public class RhythmGamePlayer : MonoBehaviour
             Hit(0);
         
         if(Keyboard.current.digit2Key.wasPressedThisFrame)
-            Hit(1);
+            Hit((DrumChannel) 1);
         
         if(Keyboard.current.digit3Key.wasPressedThisFrame)
-            Hit(2);
+            Hit((DrumChannel) 2);
         
         if(Keyboard.current.digit4Key.wasPressedThisFrame)
-            Hit(3);
+            Hit((DrumChannel) 3);
     }
 
     public void OnEnable()
@@ -75,7 +82,7 @@ public class RhythmGamePlayer : MonoBehaviour
         PlayTrack(startTrack);
     }
 
-    public bool GetScore(int channel, out float score, out RhythmTrack.Note note)
+    public bool GetScore(DrumChannel channel, out float score, out RhythmTrack.Note note)
     {
         score = 0;
         note = new RhythmTrack.Note();
@@ -130,7 +137,7 @@ public class RhythmGamePlayer : MonoBehaviour
     /// Ударить по ноте
     /// </summary>
     /// <param name="channel">Канал на котором находится нота</param>
-    public void Hit(int channel)
+    public void Hit(DrumChannel channel)
     {
         if (GetScore(channel, out var score, out var note))
         {
@@ -138,6 +145,7 @@ public class RhythmGamePlayer : MonoBehaviour
             {
                 OnNoteHit(note, score);
                 hitNotes.Add(note);
+                return;
             }
         }
         
@@ -291,8 +299,8 @@ public class RhythmGamePlayer : MonoBehaviour
         for (var i = 0; i < DisplayedNotes.Count; i++)
         {
             var note = DisplayedNotes[i];
-            var leftPosition = Mathf.InverseLerp(0f, channelCount, note.channel);
-            var rightPosition = Mathf.InverseLerp(0f, channelCount, note.channel + 1);
+            var leftPosition = Mathf.InverseLerp(0f, channelCount, (float) note.channel);
+            var rightPosition = Mathf.InverseLerp(0f, channelCount, (float) note.channel + 1);
             var topPosition = note.endPosition;
             var bottomPosition = note.startPosition;
 
@@ -320,7 +328,7 @@ public class RhythmGamePlayer : MonoBehaviour
     public struct DisplayNote
     {
         public RhythmTrack.Note originalNote;
-        public int channel;
+        public DrumChannel channel;
         public float startPosition;
         public float endPosition;
     }

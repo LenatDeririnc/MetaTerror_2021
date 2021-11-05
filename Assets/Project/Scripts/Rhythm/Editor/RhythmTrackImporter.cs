@@ -17,6 +17,9 @@ namespace Rhythm
         
         public override void OnImportAsset(AssetImportContext ctx)
         {
+            if (remaps == null)
+                remaps = new NoteRemap[0];
+            
             var midi = MidiFile.Read(ctx.assetPath);
             var notes = midi.GetNotes();
             var tempoMap = midi.GetTempoMap();
@@ -56,7 +59,7 @@ namespace Rhythm
         public struct NoteRemap
         {
             public int midiNote;
-            public int gameChannel;
+            public DrumChannel gameChannel;
         }
     }
 }

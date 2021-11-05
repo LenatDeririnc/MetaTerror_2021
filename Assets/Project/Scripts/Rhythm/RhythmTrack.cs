@@ -13,7 +13,7 @@ namespace Rhythm
         [Serializable]
         public struct Note
         {
-            public int channel;
+            public DrumChannel channel;
             public float onTime;
             public float offTime;
         }
