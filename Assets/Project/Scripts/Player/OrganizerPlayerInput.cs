@@ -1,21 +1,24 @@
 ﻿using UnityEngine;
 using UnityEngine.InputSystem;
 
-public class OrganizerPlayerInput : MonoBehaviour
+namespace Player
 {
-    public Organizer organizer;
-    
-    public InputActionReference movement;
-    public InputActionReference look;
-
-    public void Update()
+    public class OrganizerPlayerInput : MonoBehaviour
     {
-        var lookValue = look.action.ReadValue<Vector2>();
-        organizer.AddLookDirection(lookValue.x, lookValue.y);
-        
-        var movementValue = movement.action.ReadValue<Vector2>();
-        var lookMovementValue = organizer.ForwardQuaternion * new Vector3(movementValue.x, 0, movementValue.y);
+        public Organizer organizer;
+    
+        public InputActionReference movement;
+        public InputActionReference look;
 
-        organizer.SetMovementDirection(lookMovementValue);
+        public void Update()
+        {
+            var lookValue = look.action.ReadValue<Vector2>();
+            organizer.AddLookDirection(lookValue.x, lookValue.y);
+        
+            var movementValue = movement.action.ReadValue<Vector2>();
+            var lookMovementValue = organizer.ForwardQuaternion * new Vector3(movementValue.x, 0, movementValue.y);
+
+            organizer.SetMovementDirection(lookMovementValue);
+        }
     }
 }

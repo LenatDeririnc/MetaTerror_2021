@@ -1,6 +1,4 @@
-﻿using Common.Components;
-using Common.SceneManagement;
-using Common.SceneManagement.ScriptableObjects;
+﻿using Common.SceneManagement.ScriptableObjects;
 using Infrastructure.Core;
 using Infrastructure.StateMachine.Interfaces;
 

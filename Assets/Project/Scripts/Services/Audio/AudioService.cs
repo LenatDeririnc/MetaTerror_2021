@@ -1,8 +1,4 @@
-﻿using Services.Audio.Components;
-using Services.Audio.Extensions;
-using UnityEngine;
-
-namespace Services.Audio
+﻿namespace Services.Audio
 {
     public class AudioService : IService
     {

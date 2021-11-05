@@ -1,6 +1,5 @@
 ﻿using Infrastructure.Core;
 using Infrastructure.StateMachine.Interfaces;
-using UnityEngine;
 
 namespace Infrastructure.StateMachine.States
 {
