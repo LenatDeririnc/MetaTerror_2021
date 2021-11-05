@@ -7,6 +7,8 @@ using Unity.VisualScripting;
 using UnityEngine;
 using UnityEngine.InputSystem;
 
+public delegate void OnNoteHitListener(RhythmTrack.Note note, float score);
+
 public class RhythmGamePlayer : MonoBehaviour
 {
     public RhythmTrack startTrack;
@@ -21,6 +23,9 @@ public class RhythmGamePlayer : MonoBehaviour
     public PlayStats Stats => stats;
     
     public IReadOnlyList<DisplayNote> DisplayedNotes => currentDisplayNotes;
+    
+    public event Action<RhythmTrack.Note, float> OnNoteHitListener;
+    public event Action OnNoteMissListener; 
 
     private RhythmTrack currentTrack;
     private int currentTrackNote;
@@ -38,7 +43,6 @@ public class RhythmGamePlayer : MonoBehaviour
         
         currentTrack = track;
         currentTrackNote = 0;
-        targetAudioMix = -1f;
         stats = new PlayStats();
         
         currentNotes.Clear();
@@ -46,7 +50,9 @@ public class RhythmGamePlayer : MonoBehaviour
 
         PlayClip(badTrackSource, track.badAudioClip);
         PlayClip(goodTrackSource, track.goodAudioClip);
+        
         MixGoodBadAudio(1f);
+        targetAudioMix = 1f;
     }
 
     private void LateUpdate()
@@ -68,25 +74,26 @@ public class RhythmGamePlayer : MonoBehaviour
     {
         PlayTrack(startTrack);
     }
-    
-    /// <summary>
-    /// Ударить по ноте
-    /// </summary>
-    /// <param name="channel">Канал на котором находится нота</param>
-    public void Hit(int channel)
+
+    public bool GetScore(int channel, out float score, out RhythmTrack.Note note)
     {
+        score = 0;
+        note = new RhythmTrack.Note();
+        
         if(scoringCurve.length == 0)
-            return;
+            return false;
         
         var currentTime = goodTrackSource.time + noteOffset;
         var noteOnOffset = scoringCurve.keys[0].time;
         var noteOffOffset = scoringCurve.keys[scoringCurve.length - 1].time;
         var hasHit = false;
-        float score;
+
+        score = 0;
         
+        // быдлокод, оптимизировать если надо
         for (var i = 0; i < currentNotes.Count; i++)
         {
-            var note = currentNotes[i];
+            note = currentNotes[i];
             
             if(note.channel != channel)
                 continue;
@@ -94,14 +101,6 @@ public class RhythmGamePlayer : MonoBehaviour
             if (note.onTime + noteOnOffset <= currentTime && 
                 note.offTime + noteOffOffset >= currentTime)
             {
-                if (hitNotes.Contains(note))
-                {
-                    // ты чё дурак, уже ударял по этой ноте, никаких очков
-                    Debug.Log("Repeat hit");
-                    break;
-                }
-                
-                hitNotes.Add(note);
                 hasHit = true;
 
                 // ударил в ноту
@@ -119,15 +118,30 @@ public class RhythmGamePlayer : MonoBehaviour
                 {
                     score = scoringCurve.Evaluate(currentTime - note.offTime);
                 }
-                
-                OnNoteHit(note, score);
+
+                break;
             }
         }
 
-        if (!hasHit)
+        return hasHit;
+    }
+    
+    /// <summary>
+    /// Ударить по ноте
+    /// </summary>
+    /// <param name="channel">Канал на котором находится нота</param>
+    public void Hit(int channel)
+    {
+        if (GetScore(channel, out var score, out var note))
         {
-            OnNoteMiss();
+            if (hitNotes.Add(note))
+            {
+                OnNoteHit(note, score);
+                hitNotes.Add(note);
+            }
         }
+        
+        OnNoteMiss();
     }
 
     private void OnNoteMiss()
@@ -135,6 +149,7 @@ public class RhythmGamePlayer : MonoBehaviour
         stats.misses++;
 
         AnimateAudioMix(0f);
+        OnNoteMissListener?.Invoke();
         
         Debug.Log("Note Missed");
     }
@@ -148,6 +163,7 @@ public class RhythmGamePlayer : MonoBehaviour
             stats.perfectHits++;
         
         AnimateAudioMix(1f);
+        OnNoteHitListener?.Invoke(note, score);
 
         Debug.Log("HitNote: " + note.channel + ", score: " + score);
     }
