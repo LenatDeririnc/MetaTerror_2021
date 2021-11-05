@@ -1,7 +1,9 @@
-﻿using System.Collections.Generic;
+﻿using System;
+using System.Collections.Generic;
 using System.Linq;
 using Common.Extensions;
 using UnityEngine;
+using Random = UnityEngine.Random;
 
 namespace TaskManagment
 {
@@ -9,8 +11,16 @@ namespace TaskManagment
     {
         public HashSet<Task> workingTasks;
         public HashSet<Task> destroyedTasks;
+        
+        public static Action<Task> OnUpdateAction;
 
         public TaskContainer()
+        {
+            ClearSets();
+            OnUpdateAction = UpdateTask;
+        }
+
+        public void ClearSets()
         {
             workingTasks = new HashSet<Task>();
             destroyedTasks = new HashSet<Task>();
@@ -30,12 +40,6 @@ namespace TaskManagment
             var task = workingTasks.ElementAt(index);
             task.Break();
             Debug.Log($"{task.name} has broken");
-        }
-        
-        public void RemoveTask(Task task)
-        {
-            workingTasks.RemoveIfContains(task);
-            destroyedTasks.RemoveIfContains(task);
         }
 
         public void UpdateTask(Task task)
@@ -58,6 +62,8 @@ namespace TaskManagment
 
             hashSetToAdd.Add(task);
             hashSetToRemove.RemoveIfContains(task);
+            
+            Debug.Log($"works: \"{workingTasks.Count}\", broked: \"{destroyedTasks.Count}\"");
         }
     }
 }

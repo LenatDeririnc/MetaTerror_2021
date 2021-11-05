@@ -23,7 +23,7 @@ namespace Common.Components
             }
         }
 
-        protected Action OnDestroy;
+        protected Action OnDestroyAction;
 
         protected virtual void BeforeRegister() {}
 
@@ -58,11 +58,11 @@ namespace Common.Components
             }
 
             _instance ??= this as T;
-            OnDestroy += () => DestroySelf(IsDestroyWithGameObject ? (Object) gameObject : this);
+            OnDestroyAction += () => DestroySelf(IsDestroyWithGameObject ? (Object) gameObject : this);
             
             if (_instance != this)
             {
-                OnDestroy?.Invoke();
+                OnDestroyAction?.Invoke();
                 return;
             }
 
@@ -78,7 +78,7 @@ namespace Common.Components
 
         private void DestroySelf(Object target)
         {
-            OnDestroy -= () => DestroySelf(target);
+            OnDestroyAction -= () => DestroySelf(target);
             
             if (Application.isPlaying)
                 Destroy(target);
