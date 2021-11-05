@@ -2,6 +2,7 @@
 using Common.Components;
 using Common.Components.Interfaces;
 using Common.Tools;
+using Common.UI;
 using UnityEngine;
 
 namespace TaskManagment
@@ -9,12 +10,12 @@ namespace TaskManagment
     public class TaskManager : Singleton<TaskManager>, ICoroutineRunner
     {
         [SerializeField] private bool debugInfo = true;
+        [SerializeField] private int gameScoreModifier = 10;
         public float timerIntervalInSeconds = 10;
-        public int minDestroyCount = 1;
-        public int maxDestroyCount = 1;
         public TaskContainer container;
         
         private Timer _timer;
+        private int gameScore = 0;
 
         protected override void BeforeRegister()
         {
@@ -25,6 +26,13 @@ namespace TaskManagment
         {
             container = new TaskContainer();
             _timer = new Timer(this, timerIntervalInSeconds, OnTimerEnd, debugInfo: debugInfo, name: name);
+            
+            Task.OnFixAction += OnFix;
+        }
+
+        private void OnDestroy()
+        {
+            Task.OnFixAction -= OnFix;
         }
 
         private void Start()
@@ -41,6 +49,12 @@ namespace TaskManagment
         public void BreakRandomTask()
         {
             container.BreakRandom();
+        }
+
+        public void OnFix()
+        {
+            gameScore += gameScoreModifier * container.workingTasks.Count;
+            ScoreSetter.UpdateScoreAction?.Invoke(gameScore);
         }
 
     }

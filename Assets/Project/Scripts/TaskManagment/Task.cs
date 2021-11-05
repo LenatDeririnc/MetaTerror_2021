@@ -9,32 +9,39 @@ namespace TaskManagment
         private TaskManager _manager;
         
         [SerializeField] private bool _isWorking = true;
-        public bool IsWorking => _isWorking;
 
-        public static Action<Task> OnUpdateAction;
+        public bool IsWorking
+        {
+            get => _isWorking;
+            set
+            {
+                _isWorking = value;
+                TaskContainer.OnUpdateAction?.Invoke(this);
+            }
+        }
+        
+        public static Action OnFixAction;
         
         private void Start()
         {
             _manager = TaskManager.Instance;
-            OnUpdateAction += _manager.container.UpdateTask;
-            OnUpdateAction(this);
+            _manager.container.UpdateTask(this);
         }
 
         public void Break()
         {
-            _isWorking = false;
-            OnUpdateAction(this);
+            IsWorking = false;
         }
 
         public void Fix()
         {
-            if (_isWorking)
+            if (IsWorking)
                 return;
             
             print($"{name} fixed");
-            
-            _isWorking = true;
-            OnUpdateAction(this);
+
+            IsWorking = true;
+            OnFixAction?.Invoke();
         }
 
         public void OnInteract()
