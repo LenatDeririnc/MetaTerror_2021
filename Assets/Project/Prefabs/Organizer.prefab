@@ -1,5 +1,38 @@
 %YAML 1.1
 %TAG !u! tag:unity3d.com,2011:
+--- !u!1 &5018344385621525565
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 9089610407525288177}
+  m_Layer: 10
+  m_Name: Hand
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!4 &9089610407525288177
+Transform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 5018344385621525565}
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalPosition: {x: 0, y: -0.204, z: 0.121}
+  m_LocalScale: {x: 0.064386, y: 0.064385995, z: 0.5360435}
+  m_ConstrainProportionsScale: 0
+  m_Children:
+  - {fileID: 5152404494936406524}
+  - {fileID: 5152404493498006069}
+  m_Father: {fileID: 5152404493390699818}
+  m_RootOrder: 0
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!1 &5152404493390699817
 GameObject:
   m_ObjectHideFlags: 0
@@ -28,8 +61,7 @@ Transform:
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children:
-  - {fileID: 5152404494936406524}
-  - {fileID: 5152404493498006069}
+  - {fileID: 9089610407525288177}
   m_Father: {fileID: 5152404494246438331}
   m_RootOrder: 1
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
@@ -176,12 +208,12 @@ Transform:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 5152404493498006068}
-  m_LocalRotation: {x: -0.17602324, y: -0, z: -0, w: 0.9843861}
-  m_LocalPosition: {x: 0.177, y: -0.12, z: 0.35}
-  m_LocalScale: {x: 0.07983864, y: 0.07983864, z: 0.081125416}
+  m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
+  m_LocalPosition: {x: 0, y: -0.00877867, z: 0.45503658}
+  m_LocalScale: {x: 1.2399999, y: 1.2400002, z: 0.1513411}
   m_ConstrainProportionsScale: 0
   m_Children: []
-  m_Father: {fileID: 5152404493390699818}
+  m_Father: {fileID: 9089610407525288177}
   m_RootOrder: 1
   m_LocalEulerAnglesHint: {x: -20.276, y: 0, z: 0}
 --- !u!33 &5152404493498006071
@@ -442,8 +474,8 @@ MonoBehaviour:
     airAcceleration: 2.5
     jumpVelocity: 4
     jumpControlDuration: 0.25
-    maxSpeed: 3
-    maxAirSpeed: 5
+    maxSpeed: 6
+    maxAirSpeed: 10
   InputDirection: {x: 0, y: 0}
 --- !u!114 &5152404494246438333
 MonoBehaviour:
@@ -506,12 +538,12 @@ Transform:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 5152404494936406523}
-  m_LocalRotation: {x: -0.17602324, y: -0, z: -0, w: 0.9843861}
-  m_LocalPosition: {x: 0.177, y: -0.204, z: 0.121}
-  m_LocalScale: {x: 0.064386, y: 0.064386, z: 0.5360435}
+  m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
+  m_LocalPosition: {x: 0, y: 0, z: 0}
+  m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children: []
-  m_Father: {fileID: 5152404493390699818}
+  m_Father: {fileID: 9089610407525288177}
   m_RootOrder: 0
   m_LocalEulerAnglesHint: {x: -20.276, y: 0, z: 0}
 --- !u!33 &5152404494936406526

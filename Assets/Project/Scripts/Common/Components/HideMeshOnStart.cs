@@ -8,8 +8,10 @@ namespace Common.Components
         
         private void Start()
         {
-            if (target != null)
-                target.enabled = false;
+            if (target == null)
+                target = GetComponent<MeshRenderer>();
+            
+            target.enabled = false;
         }
     }
 }
