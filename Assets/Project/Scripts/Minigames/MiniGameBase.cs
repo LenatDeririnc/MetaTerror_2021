@@ -1,6 +1,7 @@
 ﻿using System;
 using DG.Tweening;
 using UnityEngine;
+using UnityEngine.InputSystem;
 
 namespace Minigames
 {
@@ -8,9 +9,13 @@ namespace Minigames
     {
         public CanvasGroup group;
         
+        public InputActionReference interactAction;
+        
         public bool IsGameRunning { get; private set; }
         
         private Action<MiniGameResult> onCompleteListener;
+
+        private float interactTimer;
 
         protected virtual void Awake()
         {
@@ -18,10 +23,24 @@ namespace Minigames
             group.interactable = false;
         }
 
+        protected abstract void OnInteract();
+
+        protected virtual void Update()
+        {
+            if(!IsGameRunning)
+                return;
+            
+            interactTimer -= Time.deltaTime;
+
+            if (interactTimer <= 0 && interactAction.action.WasPressedThisFrame())
+                OnInteract();
+        }
+
         public void StartNewGame(Action<MiniGameResult> onCompleteListener)
         {
             group.DOFade(1f, 0.5f);
             group.interactable = true;
+            interactTimer = 0.025f;
             
             IsGameRunning = true;
             this.onCompleteListener = onCompleteListener;

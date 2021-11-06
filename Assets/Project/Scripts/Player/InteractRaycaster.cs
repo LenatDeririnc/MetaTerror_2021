@@ -10,6 +10,7 @@ namespace Player
         [SerializeField] private float checkDistance;
         [SerializeField] private LayerMask interactMask;
 
+        public Organizer organizer;
         public static Action<IInteractable> ONTargetOver;
         public static Action ONInteractInput;
         private IInteractable _interactableObject;
@@ -35,7 +36,7 @@ namespace Player
                 return;
             }
 
-            _interactableObject = hit.collider.GetComponent<IInteractable>();
+            _interactableObject = hit.collider.GetComponentInParent<IInteractable>();
             ONTargetOver?.Invoke(_interactableObject);
         }
         
@@ -43,7 +44,8 @@ namespace Player
         // Почему - не ебу.
         private void OnInteractio()
         {
-            _interactableObject?.OnInteract();
+            if(organizer.IsControllable)
+                _interactableObject?.OnInteract(organizer);
         }
 
         private void OnDrawGizmos()

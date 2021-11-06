@@ -31,6 +31,12 @@ namespace Player
 
         private void Update()
         {
+            if (!organizer.IsControllable)
+            {
+                organizer.SetMovementDirection(Vector3.zero);
+                return;
+            }
+
             var organizerControls = Controls.Organizer;
             
             var lookValue = organizerControls.Look.ReadValue<Vector2>();

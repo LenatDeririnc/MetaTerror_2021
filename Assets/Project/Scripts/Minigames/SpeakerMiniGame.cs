@@ -14,8 +14,6 @@ public class SpeakerMiniGame : MiniGameBase
     public float successHitDistance = 0.125f;
     public float jackMoveTimeInSeconds = 1f;
 
-    public InputActionReference plugAction;
-
     public AudioSource clipAudioSource;
     public AudioClip failAudioClip;
     public AudioClip successAudioClip;
@@ -26,6 +24,11 @@ public class SpeakerMiniGame : MiniGameBase
     
     private float JackPosition => DOVirtual.EasedValue(0f, 1f, 
         Mathf.PingPong(jackTimer / jackMoveTimeInSeconds, 1f), Ease.InOutSine);
+
+    protected override void OnInteract()
+    {
+        TryPlug();
+    }
 
     protected override void OnGameFinished()
     {
@@ -44,8 +47,10 @@ public class SpeakerMiniGame : MiniGameBase
         speakerTransform.pivot = pivot;
     }
 
-    private void Update()
+    protected override void Update()
     {
+        base.Update();
+        
         if (!IsGameRunning || isFailAnimationPlaying)
             return;
 
@@ -59,11 +64,6 @@ public class SpeakerMiniGame : MiniGameBase
         var greenZoneColor = greenZone.color;
         greenZoneColor.a = IsHoveringAboveSpeakers() ? 0.5f : 0.25f;
         greenZone.color = greenZoneColor;
-
-        if (plugAction.action.WasPressedThisFrame())
-        {
-            TryPlug();
-        }
     }
 
     private bool IsHoveringAboveSpeakers()

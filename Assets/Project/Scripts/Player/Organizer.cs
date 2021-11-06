@@ -1,3 +1,4 @@
+using System;
 using Player.Movement;
 using UnityEngine;
 
@@ -20,6 +21,9 @@ namespace Player
         public float firstPersonViewBobMinVelocity = 0.1f;
         public float firstPersonViewBobMaxVelocity = 2f;
 
+        [NonSerialized]
+        public bool IsControllable = true;
+        
         private float lookHorizontal;
         private float lookVertical;
         private Vector3 cameraOriginalPosition;

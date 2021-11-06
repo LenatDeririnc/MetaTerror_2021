@@ -337,6 +337,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   group: {fileID: 1023380014}
+  interactAction: {fileID: 3579613072617850250, guid: d04902f11fe1a35409fd7431259d6667, type: 3}
   segmentAngle: 45
   segments:
   - {fileID: 1849256595}
@@ -351,7 +352,6 @@ MonoBehaviour:
   cursorStartVelocity: 30
   cursorMaxVelocity: 180
   cursorVelocityAcceleration: 60
-  interactAction: {fileID: 3579613072617850250, guid: d04902f11fe1a35409fd7431259d6667, type: 3}
 --- !u!82 &1023380017
 AudioSource:
   m_ObjectHideFlags: 0
@@ -822,12 +822,12 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   group: {fileID: 12683316137212695}
+  interactAction: {fileID: 3579613072617850250, guid: d04902f11fe1a35409fd7431259d6667, type: 3}
   jackTransform: {fileID: 12683316227235622}
   speakerTransform: {fileID: 12683315825374617}
   greenZone: {fileID: 12683316758828553}
   successHitDistance: 0.125
   jackMoveTimeInSeconds: 1
-  plugAction: {fileID: 3579613072617850250, guid: d04902f11fe1a35409fd7431259d6667, type: 3}
   clipAudioSource: {fileID: 12683316137212692}
   failAudioClip: {fileID: 8300000, guid: fe79806cdcce6c94684fc8749eca10c0, type: 3}
   successAudioClip: {fileID: 8300000, guid: d991f686851204645b3e1a68c4d01685, type: 3}
@@ -1491,6 +1491,7 @@ GameObject:
   - component: {fileID: 12683317470929778}
   - component: {fileID: 12683317470929779}
   - component: {fileID: 12683317470929780}
+  - component: {fileID: 6317343040560236327}
   m_Layer: 5
   m_Name: MiniGamesCanvas
   m_TagString: Untagged
@@ -1581,3 +1582,20 @@ MonoBehaviour:
   m_BlockingMask:
     serializedVersion: 2
     m_Bits: 4294967295
+--- !u!114 &6317343040560236327
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 12683317470929781}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 92b7fe4e51f543f08f42118056899b8d, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  games:
+  - type: 1
+    game: {fileID: 12683316137212696}
+  - type: 0
+    game: {fileID: 1023380013}

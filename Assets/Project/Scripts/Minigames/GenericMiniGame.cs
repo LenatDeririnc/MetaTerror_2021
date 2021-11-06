@@ -23,36 +23,19 @@ namespace Minigames
         public float cursorMaxVelocity = 30f;
         public float cursorVelocityAcceleration = 5f;
 
-        public InputActionReference interactAction;
-        
         private bool[] segmentClicked = new bool[0];
         private float[] segmentRotations = new float[0];
 
         private float cursorRotation;
         private float cursorVelocity;
-
-        protected override void Awake()
-        {
-            base.Awake();
-            
-            StartNewGame(_ => {});
-        }
-
+        
         protected override void OnGameFinished()
         {
             
         }
 
-        private void Update()
+        protected override void OnInteract()
         {
-            if(!IsGameRunning)
-                return;
-
-            cursorVelocity = Mathf.MoveTowards(cursorVelocity, cursorMaxVelocity,
-                Time.deltaTime * cursorVelocityAcceleration);
-            cursorRotation += cursorVelocity * Time.deltaTime;
-            cursorRotation = Mathf.Repeat(cursorRotation, 360f);
-
             var hoverSegment = GetHoverSegment();
 
             if (interactAction.action.WasPressedThisFrame())
@@ -68,7 +51,22 @@ namespace Minigames
                     OnSegmentMiss();
                 }
             }
+        }
+
+        protected virtual void Update()
+        {
+            base.Update();
             
+            if(!IsGameRunning)
+                return;
+
+            cursorVelocity = Mathf.MoveTowards(cursorVelocity, cursorMaxVelocity,
+                Time.deltaTime * cursorVelocityAcceleration);
+            cursorRotation += cursorVelocity * Time.deltaTime;
+            cursorRotation = Mathf.Repeat(cursorRotation, 360f);
+
+            var hoverSegment = GetHoverSegment();
+
             for (var i = 0; i < segments.Length; i++)
             {
                 var c = segments[i].color;
