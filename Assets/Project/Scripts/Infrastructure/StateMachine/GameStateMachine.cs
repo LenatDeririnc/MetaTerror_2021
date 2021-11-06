@@ -18,7 +18,7 @@ namespace Infrastructure.StateMachine
                 [typeof(BootstrapState)] = new BootstrapState(game),
                 [typeof(LoadLevelState)] = new LoadLevelState(game),
                 [typeof(GameLoopState)] = new GameLoopState(game),
-                [typeof(RegisterServicesState)] = new RegisterServicesState(game),
+                [typeof(RegisterLevelServicesState)] = new RegisterLevelServicesState(game),
             };
         }
 

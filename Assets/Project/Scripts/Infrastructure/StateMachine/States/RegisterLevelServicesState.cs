@@ -5,11 +5,11 @@ using Services.SceneLoad;
 
 namespace Infrastructure.StateMachine.States
 {
-    public class RegisterServicesState : IState
+    public class RegisterLevelServicesState : IState
     {
         private Game _game;
 
-        public RegisterServicesState(Game game)
+        public RegisterLevelServicesState(Game game)
         {
             _game = game;
         }

@@ -35,7 +35,7 @@ namespace Common.Components
 
         public static void OnLoadNewScene()
         {
-            SceneProvider.OnLoadScene -= OnLoadNewScene;
+            SceneProvider.OnLoadSceneAction -= OnLoadNewScene;
             InstanceCount = 0;
         }
 
@@ -43,7 +43,7 @@ namespace Common.Components
         {
             BeforeRegister();
 
-            SceneProvider.OnLoadScene += OnLoadNewScene;
+            SceneProvider.OnLoadSceneAction += OnLoadNewScene;
             InstanceCount += 1;
 
             if (InstanceCount == 1)

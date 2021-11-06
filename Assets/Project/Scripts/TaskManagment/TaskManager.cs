@@ -10,7 +10,7 @@ namespace TaskManagment
     public class TaskManager : Singleton<TaskManager>, ICoroutineRunner
     {
         [SerializeField] private bool debugInfo = true;
-        [SerializeField] private int gameScoreModifier = 10;
+        [SerializeField] private int gameScoreModifier = 1;
         public float breakTimeIntervalInSeconds = 10;
         public float scoreTimeIntervalInSeconds = 1;
         public TaskContainer container;
@@ -60,13 +60,20 @@ namespace TaskManagment
 
         public void OnScoreTimerEnd()
         {
-            IncreaseScore();
+            bool isTasksEnds = container.workingTasks.Count <= 0;
+            
+            var seconds = isTasksEnds ? scoreTimeIntervalInSeconds : scoreTimeIntervalInSeconds / container.workingTasks.Count;
+
+            if (!isTasksEnds) 
+                IncreaseScore();
+
+            _scoreTimer.SetStartSeconds(seconds);
             _scoreTimer.Restart();
         }
 
         private void IncreaseScore()
         {
-            gameScore += gameScoreModifier * container.workingTasks.Count;
+            gameScore += gameScoreModifier;
             ScoreSetter.UpdateScoreAction?.Invoke(gameScore);
         }
     }

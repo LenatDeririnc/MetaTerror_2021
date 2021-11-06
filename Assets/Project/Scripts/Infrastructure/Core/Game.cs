@@ -19,7 +19,8 @@ namespace Infrastructure.Core
         {
             this.mainScene = mainScene;
             loadingCurtain = curtain;
-            sceneProvider = new SceneProvider(coroutineRunner);
+            loadingCurtain.SetCoroutineRunner(coroutineRunner);
+            sceneProvider = new SceneProvider(coroutineRunner, loadingCurtain);
             serviceManager = new ServiceManager(this);
             stateMachine = new GameStateMachine(this);
         }

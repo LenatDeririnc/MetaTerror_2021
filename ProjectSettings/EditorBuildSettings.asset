@@ -6,8 +6,11 @@ EditorBuildSettings:
   serializedVersion: 2
   m_Scenes:
   - enabled: 1
-    path: Assets/Project/Scenes/MainScene.unity
-    guid: 9fc0d4010bbf28b4594072e72b8655ab
+    path: Assets/Project/Scenes/MainMenu.unity
+    guid: 434952cf8ad66b64bbc9e4735e2a27c5
+  - enabled: 1
+    path: Assets/Project/Scenes/SceneBlockout.unity
+    guid: 549c4714bf80b684d8d409d78654bccf
   m_configObjects:
     com.unity.xr.management.loader_settings: {fileID: 11400000, guid: 28c1e4fb6dd54a54c8ec2a7f5e3e3e0e, type: 2}
     com.unity.xr.openxr.settings4: {fileID: 11400000, guid: 0b39de93be116454ca2c337b117e195e, type: 2}
