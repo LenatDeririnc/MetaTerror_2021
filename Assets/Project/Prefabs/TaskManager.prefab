@@ -46,5 +46,6 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   debugInfo: 0
   gameScoreModifier: 1
+  breakSoundEffect: {fileID: 8300000, guid: f66fd0a642a27624e93267173be8972e, type: 3}
   breakTimeIntervalInSeconds: 10
-  scoreTimeIntervalInSeconds: 1
+  scoreTimeIntervalInSeconds: 0.3
