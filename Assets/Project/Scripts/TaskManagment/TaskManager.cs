@@ -11,10 +11,12 @@ namespace TaskManagment
     {
         [SerializeField] private bool debugInfo = true;
         [SerializeField] private int gameScoreModifier = 10;
-        public float timerIntervalInSeconds = 10;
+        public float breakTimeIntervalInSeconds = 10;
+        public float scoreTimeIntervalInSeconds = 1;
         public TaskContainer container;
         
-        private Timer _timer;
+        private Timer _breakTimer;
+        private Timer _scoreTimer;
         private int gameScore = 0;
 
         protected override void BeforeRegister()
@@ -25,37 +27,47 @@ namespace TaskManagment
         protected override void AfterRegister()
         {
             container = new TaskContainer();
-            _timer = new Timer(this, timerIntervalInSeconds, OnTimerEnd, debugInfo: debugInfo, name: name);
+            _breakTimer = new Timer(this, breakTimeIntervalInSeconds, OnBreakTimerEnd, debugInfo: debugInfo, name: $"{name}_breakTimer");
+            _scoreTimer = new Timer(this, scoreTimeIntervalInSeconds, OnScoreTimerEnd, debugInfo, $"{name}_scoreTimer");
             
-            Task.OnFixAction += OnFix;
+            Task.OnFixAction += OnFixAnyTask;
         }
 
         private void OnDestroy()
         {
-            Task.OnFixAction -= OnFix;
+            Task.OnFixAction -= OnFixAnyTask;
         }
 
         private void Start()
         {
-            _timer.Play();
-        }
-
-        public void OnTimerEnd()
-        {
-            _timer.Restart();
-            BreakRandomTask();
+            _breakTimer.Play();
+            _scoreTimer.Play();
         }
 
         public void BreakRandomTask()
         {
-            container.BreakRandom();
+            container.BreakRandomTask();
         }
 
-        public void OnFix()
+        public void OnFixAnyTask()
+        { }
+
+        public void OnBreakTimerEnd()
+        {
+            BreakRandomTask();
+            _breakTimer.Restart();
+        }
+
+        public void OnScoreTimerEnd()
+        {
+            IncreaseScore();
+            _scoreTimer.Restart();
+        }
+
+        private void IncreaseScore()
         {
             gameScore += gameScoreModifier * container.workingTasks.Count;
             ScoreSetter.UpdateScoreAction?.Invoke(gameScore);
         }
-
     }
 }
