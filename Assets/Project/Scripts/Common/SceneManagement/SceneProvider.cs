@@ -32,12 +32,12 @@ namespace Common.SceneManagement
                 yield return null;
             
             onLoaded?.Invoke();
-            OnLoadSceneAction?.Invoke();
             OnLoadedScene();
         }
 
         private void OnLoadedScene()
         {
+            OnLoadSceneAction?.Invoke();
             _curtain.Hide();
         }
     }
