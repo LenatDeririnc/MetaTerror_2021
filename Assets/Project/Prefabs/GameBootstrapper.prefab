@@ -45,7 +45,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 080bf009c541a8c48957c2e9282bf4d3, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  mainScene: {fileID: 11400000, guid: 0d84342b104b990429aaf346676945e4, type: 2}
+  mainScene: {fileID: 11400000, guid: 650da6087b353d64d9ee95515d58f089, type: 2}
   loadingCurtain: {fileID: 6788854349806701327}
 --- !u!1 &1745840510511159855
 GameObject:
@@ -184,7 +184,7 @@ Canvas:
   m_SortingBucketNormalizedSize: 0
   m_AdditionalShaderChannelsFlag: 0
   m_SortingLayerID: 0
-  m_SortingOrder: 0
+  m_SortingOrder: 100
   m_TargetDisplay: 0
 --- !u!114 &4143781591136347180
 MonoBehaviour:
@@ -251,3 +251,4 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   canvasGroup: {fileID: 6914986519615567116}
+  fadeSpeed: 0.03

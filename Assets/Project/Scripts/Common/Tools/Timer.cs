@@ -33,6 +33,11 @@ namespace Common.Tools
             _timerCoroutine = _runner.StartCoroutine(TimerIEnumerator());
         }
 
+        public void SetStartSeconds(float seconds)
+        {
+            _startSeconds = seconds;
+        }
+        
         public void Restart()
         {
             _currentTime = _startSeconds;
