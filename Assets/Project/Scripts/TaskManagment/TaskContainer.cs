@@ -26,7 +26,7 @@ namespace TaskManagment
             destroyedTasks = new HashSet<Task>();
         }
 
-        public void BreakRandom()
+        public void BreakRandomTask()
         {
             if (workingTasks.Count <= 0)
                 return;

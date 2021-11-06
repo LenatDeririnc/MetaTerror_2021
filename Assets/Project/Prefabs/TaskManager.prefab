@@ -45,6 +45,6 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   debugInfo: 0
-  timerIntervalInSeconds: 10
-  minDestroyCount: 1
-  maxDestroyCount: 1
+  gameScoreModifier: 1
+  breakTimeIntervalInSeconds: 10
+  scoreTimeIntervalInSeconds: 1
