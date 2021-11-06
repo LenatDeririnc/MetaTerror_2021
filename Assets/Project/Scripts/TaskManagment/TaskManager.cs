@@ -3,6 +3,7 @@ using Common.Components;
 using Common.Components.Interfaces;
 using Common.Tools;
 using Common.UI;
+using Services.Audio.Extensions;
 using UnityEngine;
 
 namespace TaskManagment
@@ -11,6 +12,9 @@ namespace TaskManagment
     {
         [SerializeField] private bool debugInfo = true;
         [SerializeField] private int gameScoreModifier = 1;
+
+        [SerializeField] private AudioClip breakSoundEffect;
+        
         public float breakTimeIntervalInSeconds = 10;
         public float scoreTimeIntervalInSeconds = 1;
         public TaskContainer container;
@@ -47,6 +51,7 @@ namespace TaskManagment
         public void BreakRandomTask()
         {
             container.BreakRandomTask();
+            breakSoundEffect.PlayOnce(0);
         }
 
         public void OnFixAnyTask()
