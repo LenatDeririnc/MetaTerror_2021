@@ -1,9 +1,5 @@
-﻿using System;
-using Common.SceneManagement;
-using UnityEngine;
-using Object = UnityEngine.Object;
+﻿using UnityEngine;
 
-/// TODO: РАЗОБРАТЬСЯ С СИНГЛТОНОМ, ПОЧЕМУ ОН УДАЛЯЕТ ЕДИНСТВЕННЫЙ ИНСТАНС НА СЦЕНЕ!!!
 namespace Common.Components
 {
     public class Singleton<T> : MonoBehaviour where T : MonoBehaviour
@@ -13,18 +9,9 @@ namespace Common.Components
         protected bool ClearInstanceOnLoadScene = false;
 
         private static T _instance;
-        public static T Instance
-        {
-            get
-            {
-                _instance ??= FindObjectOfType<T>();
-                if (_instance == null)
-                    Debug.Log("Singleton<" + typeof(T) + "> instance has been not found.");
-                return _instance;
-            }
-        }
+        public static T Instance => _instance;
 
-        protected Action OnDestroyAction;
+        private Object _hideObject;
 
         protected virtual void BeforeRegister() {}
 
@@ -34,40 +21,32 @@ namespace Common.Components
             ClearInstanceOnLoadScene = clearInstanceOnLoadScene;
         }
 
-        public static void OnLoadNewScene()
-        {
-            SceneProvider.OnLoadSceneAction -= OnLoadNewScene;
-            InstanceCount = 0;
-        }
-
-        protected void Init()
+        private void Init()
         {
             BeforeRegister();
 
-            SceneProvider.OnLoadSceneAction += OnLoadNewScene;
-            InstanceCount += 1;
+            DebugContainers.DebugCheck.InfiniteCycle(ref InstanceCount, 100);
 
-            if (InstanceCount == 1)
-            {
-                if (ClearInstanceOnLoadScene)
-                    _instance = null;
-                else
-                {
-                    transform.parent = null;
-                    DontDestroyOnLoad(this);
-                }
-            }
-
-            _instance ??= this as T;
-            OnDestroyAction += () => DestroySelf(IsDestroyWithGameObject ? (Object) gameObject : this);
+            _hideObject = IsDestroyWithGameObject ? gameObject : this;
             
-            if (_instance != this)
+            if (_instance != null)
             {
-                OnDestroyAction?.Invoke();
+                Destroy(_hideObject);
                 return;
             }
 
+            _instance = this as T;
+
+            if (!ClearInstanceOnLoadScene)
+                DontDestroyYourself();
+
             AfterRegister();
+        }
+
+        private void DontDestroyYourself()
+        {
+            transform.parent = null;
+            DontDestroyOnLoad(this);
         }
 
         protected void Awake()
@@ -76,15 +55,5 @@ namespace Common.Components
         }
         
         protected virtual void AfterRegister() {}
-
-        private void DestroySelf(Object target)
-        {
-            OnDestroyAction -= () => DestroySelf(target);
-            
-            if (Application.isPlaying)
-                Destroy(target);
-            else
-                DestroyImmediate(target);
-        }
     }
 }
