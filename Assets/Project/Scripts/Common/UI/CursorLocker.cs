@@ -1,6 +1,4 @@
-﻿using System;
-using System.Runtime.CompilerServices;
-using Common.Components;
+﻿using Common.Components;
 using UnityEngine;
 
 namespace Common.UI

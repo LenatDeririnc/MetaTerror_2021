@@ -3,6 +3,7 @@ using Common.SceneManagement;
 using UnityEngine;
 using Object = UnityEngine.Object;
 
+/// TODO: РАЗОБРАТЬСЯ С СИНГЛТОНОМ, ПОЧЕМУ ОН УДАЛЯЕТ ЕДИНСТВЕННЫЙ ИНСТАНС НА СЦЕНЕ!!!
 namespace Common.Components
 {
     public class Singleton<T> : MonoBehaviour where T : MonoBehaviour
