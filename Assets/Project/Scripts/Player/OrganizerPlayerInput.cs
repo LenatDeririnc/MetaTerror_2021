@@ -1,4 +1,5 @@
 ﻿using System;
+using Services.Input;
 using UnityEngine;
 using UnityEngine.InputSystem;
 
@@ -12,7 +13,10 @@ namespace Player
 
         private void OnEnable()
         {
-            Controls = new PlayerControls();
+            Controls = InputService.CurrentInput.Controls;
+            if (Controls == null)
+                return;
+            
             Controls.Enable();
 
             var organizer = Controls.Organizer;
@@ -22,6 +26,9 @@ namespace Player
 
         private void OnDisable()
         {
+            if (Controls == null)
+                return;
+            
             Controls.Disable();
             
             var organizer = Controls.Organizer;

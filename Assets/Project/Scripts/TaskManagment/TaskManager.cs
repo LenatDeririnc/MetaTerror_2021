@@ -1,15 +1,14 @@
-﻿using System;
-using Common.Components;
+﻿using Common.Components;
 using Common.Components.Interfaces;
 using Common.Tools;
 using Common.UI;
-using Services.Audio.Extensions;
 using UnityEngine;
 
 namespace TaskManagment
 {
     public class TaskManager : Singleton<TaskManager>, ICoroutineRunner
     {
+        [SerializeField] private bool StartOnLoadScene;
         [SerializeField] private bool debugInfo = true;
         [SerializeField] private int gameScoreModifier = 1;
 
@@ -37,7 +36,20 @@ namespace TaskManagment
 
         private void Start()
         {
+            if (StartOnLoadScene)
+            {
+                _breakTimer.Play();
+                _scoreTimer.Play();
+            }
+        }
+
+        public void StartBreakTimer()
+        {
             _breakTimer.Play();
+        }
+
+        public void StartScoreTimer()
+        {
             _scoreTimer.Play();
         }
 

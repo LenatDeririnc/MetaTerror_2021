@@ -1,5 +1,6 @@
 ﻿using Infrastructure.Core;
 using Infrastructure.StateMachine.Interfaces;
+using Services.Input;
 
 namespace Infrastructure.StateMachine.States
 {
@@ -14,6 +15,7 @@ namespace Infrastructure.StateMachine.States
 
         public void Enter()
         {
+            _game.serviceManager.RegisterService<InputService>();
             _game.stateMachine.Enter<LoadLevelState>();
         }
 

@@ -19,7 +19,6 @@ namespace Infrastructure.StateMachine.States
 
         public void Enter()
         {
-            _game.serviceManager.RegisterService<InputService>();
             _game.serviceManager.RegisterService<SceneService>();
             _game.stateMachine.Enter<GameLoopState>();
         }
