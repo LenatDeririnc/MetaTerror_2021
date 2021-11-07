@@ -59,7 +59,10 @@ namespace Common.Tools
                 return;
             
             _isEnabled = false;
-            _runner.StopCoroutine(_timerCoroutine);
+            
+            if (_timerCoroutine != null)
+                _runner.StopCoroutine(_timerCoroutine);
+            
             _timerCoroutine = null;
         }
 

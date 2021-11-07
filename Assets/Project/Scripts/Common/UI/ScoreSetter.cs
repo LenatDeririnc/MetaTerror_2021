@@ -6,9 +6,9 @@ namespace Common.UI
 {
     public class ScoreSetter : MonoBehaviour
     {
-        [SerializeField] private TMP_Text _text;
-        [SerializeField] private string scoreNames = "Score";
-        [SerializeField] private int currentScore = 0;
+        [SerializeField] protected TMP_Text _text;
+        [SerializeField] protected string scoreNames = "Score";
+        [SerializeField] protected int currentScore = 0;
 
         public static Action<int> UpdateScoreAction; 
 
