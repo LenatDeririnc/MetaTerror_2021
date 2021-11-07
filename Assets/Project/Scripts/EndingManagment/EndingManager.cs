@@ -1,6 +1,4 @@
-﻿using System;
-using System.Collections;
-using Common.Components;
+﻿using Common.Components;
 using Common.Components.Interfaces;
 using Common.SceneManagement.ScriptableObjects;
 using Common.Tools;
@@ -19,7 +17,6 @@ namespace EndingManagment
         [SerializeField] private float timerInSeconds = 6 * 60;
         [SerializeField] private Scene scene;
         [SerializeField] private PlayableDirector _director;
-        private Timer _endingTimer;
 
         protected override void BeforeRegister()
         {
@@ -28,20 +25,17 @@ namespace EndingManagment
 
         protected override void AfterRegister()
         {
-            _endingTimer = new Timer(this, timerInSeconds, OnTimerEnd, debugInfo: debugInfo, name: $"{name}_endingTimer");
+            
         }
 
         private void Start()
         {
             if (startOnLoadScene)
-                StartTimer();
+            {
+                RhythmGamePlayer.Instance.AddCallback(timerInSeconds, OnTimerEnd);
+            }
         }
-
-        public void StartTimer()
-        {
-            _endingTimer.Play();
-        }
-
+        
         public void StartEnd()
         {
             _director.Play();

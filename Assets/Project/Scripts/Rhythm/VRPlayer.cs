@@ -17,6 +17,8 @@ namespace Rhythm
         {
             RhythmGamePlayer.Instance.isVRPlayerPresent = true;
             StartCoroutine(Init());
+            
+            recenter.asset.Enable();
         }
 
         private IEnumerator Init()
@@ -28,8 +30,8 @@ namespace Rhythm
         private void Update()
         {
             if (recenter.action.WasPressedThisFrame())
-            {
-                var diff = rigRootTransform.InverseTransformPoint(cameraTransform.position);
+            {   
+                var diff = cameraTransform.position - rigRootTransform.position;
                 rigRootTransform.position = recenterTarget.position - diff;
             }
         }
