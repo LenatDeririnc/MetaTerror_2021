@@ -10,6 +10,7 @@ namespace Infrastructure.Components
     {
         public LoadingCurtain loadingCurtain;
         private Game _game;
+        public bool VR_mode = false;
 
         protected override void BeforeRegister() =>
             SetSettings(true);
