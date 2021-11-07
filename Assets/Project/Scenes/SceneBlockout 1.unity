@@ -966,6 +966,14 @@ PrefabInstance:
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
       objectReference: {fileID: 0}
+    - target: {fileID: 5152404494246438333, guid: c037a14bc08d8ba40a2c80e53fbff1d4, type: 3}
+      propertyPath: footstepInterval
+      value: 0.4
+      objectReference: {fileID: 0}
+    - target: {fileID: 5152404494246438333, guid: c037a14bc08d8ba40a2c80e53fbff1d4, type: 3}
+      propertyPath: footstepMagnitude
+      value: 0.15
+      objectReference: {fileID: 0}
     - target: {fileID: 5235442295469576120, guid: c037a14bc08d8ba40a2c80e53fbff1d4, type: 3}
       propertyPath: m_LocalPosition.x
       value: 0.033073187
@@ -5436,6 +5444,10 @@ PrefabInstance:
   m_Modification:
     m_TransformParent: {fileID: 0}
     m_Modifications:
+    - target: {fileID: 8925315271981687988, guid: d07f540967c62f2458086631e2168789, type: 3}
+      propertyPath: debugInfo
+      value: 1
+      objectReference: {fileID: 0}
     - target: {fileID: 8925315271981687989, guid: d07f540967c62f2458086631e2168789, type: 3}
       propertyPath: m_Name
       value: TaskManager

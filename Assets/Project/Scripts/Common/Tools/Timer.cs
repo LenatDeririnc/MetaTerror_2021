@@ -1,6 +1,7 @@
 ﻿using System;
 using System.Collections;
 using Common.Components.Interfaces;
+using Unity.VisualScripting;
 using UnityEngine;
 
 namespace Common.Tools
@@ -15,7 +16,23 @@ namespace Common.Tools
         private readonly bool _debugInfo;
         private float _startSeconds;
 
-        private bool _isEnabled = true;
+        private bool _isEnabled = false;
+
+        public bool IsEnabled
+        {
+            get => _isEnabled;
+            set
+            {
+                _isEnabled = value;
+                
+                if (value)
+                    Play();
+                else
+                    Stop();
+            }
+        }
+
+        public float CurrentTime => _currentTime;
         
         public Timer(ICoroutineRunner runner, float startSeconds, Action callbackAction, bool debugInfo = false, string name = "Timer")
         {
@@ -29,38 +46,46 @@ namespace Common.Tools
 
         public void Play()
         {
+            if (IsEnabled)
+                return;
+
             _isEnabled = true;
             _timerCoroutine = _runner.StartCoroutine(TimerIEnumerator());
+        }
+
+        public void Stop()
+        {
+            if (!IsEnabled)
+                return;
+            
+            _isEnabled = false;
+            _runner.StopCoroutine(_timerCoroutine);
+            _timerCoroutine = null;
+        }
+
+        public void Restart()
+        {
+            Stop();
+            _currentTime = _startSeconds;
+            Play();
         }
 
         public void SetStartSeconds(float seconds)
         {
             _startSeconds = seconds;
         }
-        
-        public void Restart()
-        {
-            _currentTime = _startSeconds;
-            Play();
-        }
 
-        public void Stop()
-        {
-            _runner.StopCoroutine(_timerCoroutine);
-            _isEnabled = false;
-        }
-        
         public IEnumerator TimerIEnumerator()
         {
-            while (_isEnabled && _currentTime > 0)
+            while (IsEnabled && _currentTime > 0)
             {
                 _currentTime -= Time.deltaTime;
                 if (_debugInfo)
                     Debug.Log(ToString());
                 yield return null;
             }
-            
-            if (_isEnabled)
+
+            if (IsEnabled)
                 _callbackAction();
         }
 
