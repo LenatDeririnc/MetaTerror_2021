@@ -26306,7 +26306,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 6883201354416510511, guid: 64571d67539fdf2469d349d8dd66d7a3, type: 3}
       propertyPath: timerInSeconds
-      value: 10
+      value: 330
       objectReference: {fileID: 0}
     - target: {fileID: 6883201354416510511, guid: 64571d67539fdf2469d349d8dd66d7a3, type: 3}
       propertyPath: startOnLoadScene
