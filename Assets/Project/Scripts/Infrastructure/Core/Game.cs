@@ -15,9 +15,8 @@ namespace Infrastructure.Core
         public LoadingCurtain loadingCurtain;
         public SceneProvider sceneProvider;
 
-        public Game(ICoroutineRunner coroutineRunner, LoadingCurtain curtain, Scene mainScene)
+        public Game(ICoroutineRunner coroutineRunner, LoadingCurtain curtain)
         {
-            this.mainScene = mainScene;
             loadingCurtain = curtain;
             loadingCurtain.SetCoroutineRunner(coroutineRunner);
             sceneProvider = new SceneProvider(coroutineRunner, loadingCurtain);

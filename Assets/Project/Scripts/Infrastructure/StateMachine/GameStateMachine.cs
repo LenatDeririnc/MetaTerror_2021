@@ -16,7 +16,6 @@ namespace Infrastructure.StateMachine
             _states = new Dictionary<Type, IExitableState>()
             {
                 [typeof(BootstrapState)] = new BootstrapState(game),
-                [typeof(LoadLevelState)] = new LoadLevelState(game),
                 [typeof(GameLoopState)] = new GameLoopState(game),
                 [typeof(RegisterLevelServicesState)] = new RegisterLevelServicesState(game),
             };

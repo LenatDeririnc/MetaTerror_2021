@@ -8,7 +8,6 @@ namespace Infrastructure.Components
 {
     public class GameBootstrapper : Singleton<GameBootstrapper>, ICoroutineRunner
     {
-        public Scene mainScene;
         public LoadingCurtain loadingCurtain;
         private Game _game;
 
@@ -17,7 +16,7 @@ namespace Infrastructure.Components
 
         protected override void AfterRegister()
         {
-            _game = new Game(this, loadingCurtain, mainScene);
+            _game = new Game(this, loadingCurtain);
             _game.stateMachine.Enter<BootstrapState>();
         }
     }

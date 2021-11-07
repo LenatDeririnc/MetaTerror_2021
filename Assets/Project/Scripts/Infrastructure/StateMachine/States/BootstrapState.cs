@@ -15,8 +15,7 @@ namespace Infrastructure.StateMachine.States
 
         public void Enter()
         {
-            _game.serviceManager.RegisterService<InputService>();
-            _game.stateMachine.Enter<LoadLevelState>();
+            _game.stateMachine.Enter<RegisterLevelServicesState>();
         }
 
         public void Exit() {}
