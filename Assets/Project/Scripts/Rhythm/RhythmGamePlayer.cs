@@ -5,9 +5,11 @@ using DG.Tweening;
 using Rhythm;
 using Unity.VisualScripting;
 using UnityEngine;
+using UnityEngine.InputSystem;
 
 public delegate void OnNoteHitListener(RhythmTrack.Note note, float score);
 
+[DefaultExecutionOrder(-10000)]
 public class RhythmGamePlayer : MonoBehaviour
 {
     public static RhythmGamePlayer Instance { get; private set; }
@@ -27,7 +29,7 @@ public class RhythmGamePlayer : MonoBehaviour
     
     public event Action<RhythmTrack.Note, float> OnNoteHitListener;
     public event Action OnNoteMissListener;
-
+    
     public bool isVRPlayerPresent = false;
     
     private RhythmTrack currentTrack;
@@ -75,7 +77,7 @@ public class RhythmGamePlayer : MonoBehaviour
 
     private void LateUpdate()
     {
-        /*if(Keyboard.current.digit1Key.wasPressedThisFrame)
+        if(Keyboard.current.digit1Key.wasPressedThisFrame)
             Hit(0);
         
         if(Keyboard.current.digit2Key.wasPressedThisFrame)
@@ -85,7 +87,7 @@ public class RhythmGamePlayer : MonoBehaviour
             Hit((DrumChannel) 2);
         
         if(Keyboard.current.digit4Key.wasPressedThisFrame)
-            Hit((DrumChannel) 3);*/
+            Hit((DrumChannel) 3);
     }
 
     public void OnEnable()

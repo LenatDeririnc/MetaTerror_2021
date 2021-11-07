@@ -321,7 +321,6 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   comboText: {fileID: 4042044504517673973}
-  currentCombo: 0
   comboAddColor: {r: 0, g: 1, b: 0, a: 1}
   comboBreakColor: {r: 1, g: 0, b: 0, a: 1}
 --- !u!1 &4349582512710678989
@@ -527,8 +526,8 @@ MonoBehaviour:
       m_Calls: []
   m_text: "\u041A\u041E\u041C\u0411\u041E"
   m_isRightToLeft: 0
-  m_fontAsset: {fileID: 11400000, guid: 0161d805a3764c089bef00bfe00793f5, type: 2}
-  m_sharedMaterial: {fileID: 2147374, guid: 0161d805a3764c089bef00bfe00793f5, type: 2}
+  m_fontAsset: {fileID: 11400000, guid: 5302535af1044152a457ed104f1f4b91, type: 2}
+  m_sharedMaterial: {fileID: 2100000, guid: b246c4190f4e46ec9352fe15a7b09ce0, type: 2}
   m_fontSharedMaterials: []
   m_fontMaterial: {fileID: 0}
   m_fontMaterials: []

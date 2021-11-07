@@ -123,6 +123,45 @@
                     "isPartOfComposite": false
                 }
             ]
+        },
+        {
+            "name": "VRPlayer",
+            "id": "8feda545-2e96-4a7d-b182-5dbbb2e4f66e",
+            "actions": [
+                {
+                    "name": "Recenter",
+                    "type": "Button",
+                    "id": "0c9f4b4c-3e05-475e-af13-b0f356fdf187",
+                    "expectedControlType": "Button",
+                    "processors": "",
+                    "interactions": "",
+                    "initialStateCheck": false
+                }
+            ],
+            "bindings": [
+                {
+                    "name": "",
+                    "id": "dfe33a9b-d0c0-4ae5-9c8f-451114e95dc3",
+                    "path": "<OpenVROculusTouchController>/primaryButton",
+                    "interactions": "",
+                    "processors": "",
+                    "groups": "",
+                    "action": "Recenter",
+                    "isComposite": false,
+                    "isPartOfComposite": false
+                },
+                {
+                    "name": "",
+                    "id": "4c2c43cf-8e4c-4c1b-ba60-910e1eafa4d9",
+                    "path": "<WMRSpatialController>/touchpadClicked",
+                    "interactions": "",
+                    "processors": "",
+                    "groups": "",
+                    "action": "Recenter",
+                    "isComposite": false,
+                    "isPartOfComposite": false
+                }
+            ]
         }
     ],
     "controlSchemes": []
