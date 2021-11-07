@@ -48,8 +48,16 @@ namespace Player
 
         private void PlayStep()
         {
+            if (!IsControllable)
+                return;
+            
             footsteps.PeakRandom().Play(1);
             _footstepTimer.Restart();
+        }
+
+        public void SetIsControllable(bool value)
+        {
+            IsControllable = value;
         }
 
         public void SetMovementDirection(Vector3 direction)

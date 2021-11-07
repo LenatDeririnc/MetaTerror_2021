@@ -41,6 +41,12 @@ namespace TaskManagment
             _scoreTimer.Play();
         }
 
+        public void Stop()
+        {
+            _breakTimer.Stop();
+            _scoreTimer.Stop();
+        }
+
         public void BreakRandomTask()
         {
             container.BreakRandomTask();
