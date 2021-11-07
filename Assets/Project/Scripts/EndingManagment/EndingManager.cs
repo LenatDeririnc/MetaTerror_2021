@@ -14,6 +14,7 @@ namespace EndingManagment
 {
     public class EndingManager : Singleton<EndingManager>, ICoroutineRunner
     {
+        [SerializeField] private bool startOnLoadScene = false;
         [SerializeField] private bool debugInfo = false;
         [SerializeField] private float timerInSeconds = 6 * 60;
         [SerializeField] private Scene scene;
@@ -32,18 +33,29 @@ namespace EndingManagment
 
         private void Start()
         {
+            if (startOnLoadScene)
+                StartTimer();
+        }
+
+        public void StartTimer()
+        {
             _endingTimer.Play();
+        }
+
+        public void StartEnd()
+        {
+            _director.Play();
         }
 
         private void OnTimerEnd()
         {
             print("end!");
-            _director.Play();
+            StartEnd();
         }
         
         public void HideGameView()
         {
-            MainCanvas.Instance?.panel.SetActive(true);
+            MainCanvas.Instance?.blackScreen.SetActive(true);
         }
         
         public void EndGame()
