@@ -9,7 +9,7 @@ public class ComboDisplay : MonoBehaviour
     public Color comboAddColor = Color.green;
     public Color comboBreakColor = Color.red;
 
-    private int lastCombo = -1;
+    private int lastCombo;
     
     private void Update()
     {
@@ -19,7 +19,7 @@ public class ComboDisplay : MonoBehaviour
         {
             comboText.SetText(currentCombo
                 .ToString()
-                .PadLeft(3, '0'));
+                .PadLeft(4, '0'));
             
             comboText.rectTransform.DOKill();
             comboText.DOKill();
