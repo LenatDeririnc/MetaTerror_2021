@@ -6,7 +6,7 @@ namespace GameCore.UI.MainMenu
 {
     public class StartGameButton : Common.UI.MainMenu.Buttons.StartGameButton
     {
-        [SerializeField] private Scene scene;
+        [SerializeField] protected Scene scene;
         
         protected override void Start()
         {
