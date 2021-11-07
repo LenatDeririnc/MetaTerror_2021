@@ -142,7 +142,7 @@
                 {
                     "name": "",
                     "id": "dfe33a9b-d0c0-4ae5-9c8f-451114e95dc3",
-                    "path": "<OpenVROculusTouchController>/primaryButton",
+                    "path": "<OculusTouchController>/thumbstickClicked",
                     "interactions": "",
                     "processors": "",
                     "groups": "",
@@ -154,6 +154,17 @@
                     "name": "",
                     "id": "4c2c43cf-8e4c-4c1b-ba60-910e1eafa4d9",
                     "path": "<WMRSpatialController>/touchpadClicked",
+                    "interactions": "",
+                    "processors": "",
+                    "groups": "",
+                    "action": "Recenter",
+                    "isComposite": false,
+                    "isPartOfComposite": false
+                },
+                {
+                    "name": "",
+                    "id": "faf3cfb8-fb73-437b-a93e-9e3b444b0c01",
+                    "path": "<Keyboard>/f12",
                     "interactions": "",
                     "processors": "",
                     "groups": "",

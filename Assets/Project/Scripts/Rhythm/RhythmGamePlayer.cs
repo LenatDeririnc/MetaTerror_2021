@@ -218,6 +218,9 @@ public class RhythmGamePlayer : MonoBehaviour
 
     private void UpdateDisplayNotes()
     {
+        if (currentTrack == null)
+            return;
+        
         var currentTime = goodTrackSource.time + noteOffset;
         var curveEnd = scoringCurve[scoringCurve.length - 1].time;
 
