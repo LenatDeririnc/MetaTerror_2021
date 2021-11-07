@@ -90,11 +90,6 @@ public class RhythmGamePlayer : MonoBehaviour
             Hit((DrumChannel) 3);
     }
 
-    public void OnEnable()
-    {
-        PlayTrack(startTrack);
-    }
-
     public bool GetScore(DrumChannel channel, out float score, out RhythmTrack.Note note)
     {
         score = 0;
@@ -152,6 +147,11 @@ public class RhythmGamePlayer : MonoBehaviour
     /// <param name="channel">Канал на котором находится нота</param>
     public void Hit(DrumChannel channel)
     {
+        if (currentTrack != startTrack)
+        {
+            PlayTrack(startTrack);
+        }
+
         if (GetScore(channel, out var score, out var note))
         {
             if (hitNotes.Add(note))

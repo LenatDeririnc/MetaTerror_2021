@@ -4440,6 +4440,11 @@ Transform:
   m_CorrespondingSourceObject: {fileID: 7067000175524087083, guid: f7a155f77065107418c904da73152e2e, type: 3}
   m_PrefabInstance: {fileID: 240145426}
   m_PrefabAsset: {fileID: 0}
+--- !u!1 &258555391 stripped
+GameObject:
+  m_CorrespondingSourceObject: {fileID: 9019316766032843587, guid: fab994edb774cdc4b8c0fbe6e75abc63, type: 3}
+  m_PrefabInstance: {fileID: 1470972735}
+  m_PrefabAsset: {fileID: 0}
 --- !u!1 &264549013
 GameObject:
   m_ObjectHideFlags: 0
@@ -9287,6 +9292,11 @@ PrefabInstance:
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 63421ba5c87804f418f8c953441eb764, type: 3}
+--- !u!1 &695657115 stripped
+GameObject:
+  m_CorrespondingSourceObject: {fileID: 510067535, guid: fab994edb774cdc4b8c0fbe6e75abc63, type: 3}
+  m_PrefabInstance: {fileID: 1470972735}
+  m_PrefabAsset: {fileID: 0}
 --- !u!1 &699239253
 GameObject:
   m_ObjectHideFlags: 0
@@ -17486,7 +17496,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 9019316766032843587, guid: fab994edb774cdc4b8c0fbe6e75abc63, type: 3}
       propertyPath: m_IsActive
-      value: 1
+      value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 9067079522478207098, guid: fab994edb774cdc4b8c0fbe6e75abc63, type: 3}
       propertyPath: m_Layer
@@ -22020,6 +22030,25 @@ PrefabInstance:
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 02f260aeed271f04a9a9796923c7c6f6, type: 3}
+--- !u!1 &1877265788 stripped
+GameObject:
+  m_CorrespondingSourceObject: {fileID: 5849595045073428658, guid: fab994edb774cdc4b8c0fbe6e75abc63, type: 3}
+  m_PrefabInstance: {fileID: 1470972735}
+  m_PrefabAsset: {fileID: 0}
+--- !u!114 &1877265789
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1877265788}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 8ea656bdb5d64a1ea4626670803c46b2, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  vrDrumPlayer: {fileID: 258555391}
+  animatedDrumPlayer: {fileID: 695657115}
 --- !u!1 &1881713033
 GameObject:
   m_ObjectHideFlags: 0

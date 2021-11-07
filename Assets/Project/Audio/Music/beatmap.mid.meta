@@ -1,4 +1,4 @@
-﻿fileFormatVersion: 2
+fileFormatVersion: 2
 guid: 040d0508da3052d428aee691e706ac0b
 ScriptedImporter:
   internalIDToNameTable: []
@@ -17,5 +17,5 @@ ScriptedImporter:
     gameChannel: 3
   - midiNote: 52
     gameChannel: 0
-  goodAudioClip: {fileID: 8300000, guid: 3557ed5c95866ef4d8d718a395ac4004, type: 3}
-  badAudioClip: {fileID: 8300000, guid: f511ba3d7d5d6924db5d7ebd7f0a1f56, type: 3}
+  goodAudioClip: {fileID: 8300000, guid: 742ce13b5245cb343ad566ceccacbe86, type: 3}
+  badAudioClip: {fileID: 8300000, guid: 10c21869b6c555440a77c993536eafac, type: 3}
