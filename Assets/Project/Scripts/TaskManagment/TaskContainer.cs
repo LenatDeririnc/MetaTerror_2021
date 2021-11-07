@@ -3,6 +3,7 @@ using System.Collections.Generic;
 using System.Linq;
 using Common.Extensions;
 using Services.Audio.Extensions;
+using UI;
 using UnityEngine;
 using Random = UnityEngine.Random;
 
@@ -35,6 +36,7 @@ namespace TaskManagment
             if (workingTasks.Count <= 0)
                 return;
             
+            MainCanvas.Instance.scorePanel.Blink();
             int random = Random.Range(0, workingTasks.Count);
             BreakTask(random);
         }
@@ -69,6 +71,8 @@ namespace TaskManagment
             hashSetToRemove.RemoveIfContains(task);
             
             Debug.Log($"works: \"{workingTasks.Count}\", broked: \"{destroyedTasks.Count}\"");
+            
+            BreaksUICount.Instance.UpdateCount();
         }
     }
 }

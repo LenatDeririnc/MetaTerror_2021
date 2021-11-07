@@ -1,5 +1,4 @@
 ﻿using Common.Components;
-using Services.SceneLoad;
 using UnityEngine;
 
 namespace UI
@@ -7,6 +6,7 @@ namespace UI
     public class MainCanvas : Singleton<MainCanvas>
     {
         public GameObject panel;
+        public ScoreSetterWithColor scorePanel;
 
         protected override void BeforeRegister()
         {
