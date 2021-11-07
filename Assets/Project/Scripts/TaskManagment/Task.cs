@@ -9,6 +9,9 @@ namespace TaskManagment
 {
     public class Task : MonoBehaviour, IInteractable
     {
+        [SerializeField] private Animator _animator;
+        [SerializeField] private string FixAnimatorTrigger = "OnFix";
+        [SerializeField] private string BreakAnimatorTrigger = "OnBreak";
         [SerializeField] private SpriteRenderer _sprite;
         [SerializeField] private MiniGameType _miniGameType;
         
@@ -55,6 +58,9 @@ namespace TaskManagment
             UpdateSprite();
             ONBreakAction?.Invoke(this);
             ONUpdateStateAction?.Invoke(this);
+            
+            if (_animator != null)
+                _animator.SetTrigger(BreakAnimatorTrigger);
         }
         
         
@@ -69,6 +75,9 @@ namespace TaskManagment
             UpdateSprite();
             ONFixAction?.Invoke(this);
             ONUpdateStateAction?.Invoke(this);
+            
+            if (_animator != null)
+                _animator.SetTrigger(FixAnimatorTrigger);
         }
 
         public void OnInteract(Organizer organizer)
