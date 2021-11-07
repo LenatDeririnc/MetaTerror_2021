@@ -2,6 +2,7 @@
 using System.Collections.Generic;
 using System.Linq;
 using Common.Extensions;
+using Services.Audio.Extensions;
 using UnityEngine;
 using Random = UnityEngine.Random;
 
@@ -12,12 +13,15 @@ namespace TaskManagment
         public HashSet<Task> workingTasks;
         public HashSet<Task> destroyedTasks;
         
+        private AudioClip _breakSoundEffect;
+        
         public static Action<Task> OnUpdateAction;
 
-        public TaskContainer()
+        public TaskContainer(AudioClip breakSoundEffect)
         {
             ClearSets();
             OnUpdateAction = UpdateTask;
+            _breakSoundEffect = breakSoundEffect;
         }
 
         public void ClearSets()
@@ -39,6 +43,7 @@ namespace TaskManagment
         {
             var task = workingTasks.ElementAt(index);
             task.Break();
+            _breakSoundEffect.PlayOnce(0);
             Debug.Log($"{task.name} has broken");
         }
 

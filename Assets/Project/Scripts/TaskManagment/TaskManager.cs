@@ -30,7 +30,7 @@ namespace TaskManagment
 
         protected override void AfterRegister()
         {
-            container = new TaskContainer();
+            container = new TaskContainer(breakSoundEffect);
             _breakTimer = new Timer(this, breakTimeIntervalInSeconds, OnBreakTimerEnd, debugInfo: debugInfo, name: $"{name}_breakTimer");
             _scoreTimer = new Timer(this, scoreTimeIntervalInSeconds, OnScoreTimerEnd, debugInfo, $"{name}_scoreTimer");
             
@@ -51,7 +51,6 @@ namespace TaskManagment
         public void BreakRandomTask()
         {
             container.BreakRandomTask();
-            breakSoundEffect.PlayOnce(0);
         }
 
         public void OnFixAnyTask()

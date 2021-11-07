@@ -1,10 +1,15 @@
 using System;
+using Common.Components.Interfaces;
+using Common.Extensions;
+using Common.Tools;
+using Infrastructure.Components;
 using Player.Movement;
+using Services.Audio.Extensions;
 using UnityEngine;
 
 namespace Player
 {
-    public class Organizer : MonoBehaviour
+    public class Organizer : MonoBehaviour, ICoroutineRunner
     {
         [Header("Components")]
         public Transform cameraTransform;
@@ -15,7 +20,11 @@ namespace Player
         public Animator thirdPersonAnimator;
         public float thirdPersonRotationSpeed = 10f;
 
-        [Header("First Person")]
+        [Header("First Person")] 
+        public AudioClip[] footsteps;
+
+        public float footstepInterval = 0.3f;
+        public float footstepMagnitude = 0.1f;
         public Transform firstPersonModel;
         public float firstPersonRotationSpeed = 20f;
         public float firstPersonViewBobMinVelocity = 0.1f;
@@ -27,13 +36,37 @@ namespace Player
         private float lookHorizontal;
         private float lookVertical;
         private Vector3 cameraOriginalPosition;
+        private Timer _footstepTimer;
 
         public Quaternion LookQuaternion => Quaternion.Euler(lookVertical, lookHorizontal, 0);
         public Quaternion ForwardQuaternion => Quaternion.Euler(0, lookHorizontal, 0);
 
+        private void Awake()
+        {
+            _footstepTimer = new Timer(this, footstepInterval, PlayStep, false, "footprints_timer");
+        }
+
+        private void PlayStep()
+        {
+            footsteps.PeakRandom().Play(1);
+            _footstepTimer.Restart();
+        }
+
         public void SetMovementDirection(Vector3 direction)
         {
             movingObject.InputDirection = new Vector3(direction.x, direction.z);
+
+            if (_footstepTimer == null)
+                return;
+            
+            if (movingObject.InputDirection.magnitude > footstepMagnitude)
+            {
+                _footstepTimer.Play();
+            }
+            else
+            {
+                _footstepTimer.Stop();
+            }
         }
 
         public void AddLookDirection(float horizontal, float vertical)
