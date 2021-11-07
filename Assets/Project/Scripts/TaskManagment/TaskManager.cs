@@ -33,13 +33,6 @@ namespace TaskManagment
             container = new TaskContainer(breakSoundEffect);
             _breakTimer = new Timer(this, breakTimeIntervalInSeconds, OnBreakTimerEnd, debugInfo: debugInfo, name: $"{name}_breakTimer");
             _scoreTimer = new Timer(this, scoreTimeIntervalInSeconds, OnScoreTimerEnd, debugInfo, $"{name}_scoreTimer");
-            
-            Task.OnFixAction += OnFixAnyTask;
-        }
-
-        private void OnDestroy()
-        {
-            Task.OnFixAction -= OnFixAnyTask;
         }
 
         private void Start()
@@ -52,9 +45,6 @@ namespace TaskManagment
         {
             container.BreakRandomTask();
         }
-
-        public void OnFixAnyTask()
-        { }
 
         public void OnBreakTimerEnd()
         {

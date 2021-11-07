@@ -71,8 +71,6 @@ namespace TaskManagment
             hashSetToRemove.RemoveIfContains(task);
             
             Debug.Log($"works: \"{workingTasks.Count}\", broked: \"{destroyedTasks.Count}\"");
-            
-            BreaksUICount.Instance.UpdateCount();
         }
     }
 }

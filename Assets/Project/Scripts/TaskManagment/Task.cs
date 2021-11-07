@@ -2,6 +2,7 @@
 using Minigames;
 using Player;
 using Player.Interfaces;
+using UI;
 using UnityEngine;
 
 namespace TaskManagment
@@ -14,6 +15,12 @@ namespace TaskManagment
         [SerializeField] private bool _isWorking = true;
 
         private TaskManager _manager;
+        public Sprite Sprite => _sprite.sprite;
+
+        public static Action<Task> ONBreakAction;
+        public static Action<Task> ONFixAction;
+        public static Action<Task> ONUpdateStateAction;
+        public static Action<Task> ONSpriteUpdate;
 
         public bool IsWorking
         {
@@ -25,19 +32,20 @@ namespace TaskManagment
                 TaskContainer.OnUpdateAction?.Invoke(this);
             }
         }
-        
-        public static Action OnFixAction;
-        
+
         protected virtual void Start()
         {
             _manager = TaskManager.Instance;
             _manager.container.UpdateTask(this);
+            BreaksUICount.Instance.AppendIcon(this);
+            ONSpriteUpdate += BreaksUICount.Instance.UpdateIcon;
             UpdateSprite();
         }
 
         private void UpdateSprite()
         {
             _sprite.enabled = !IsWorking;
+            ONSpriteUpdate?.Invoke(this);
         }
 
         
@@ -45,6 +53,8 @@ namespace TaskManagment
         {
             IsWorking = false;
             UpdateSprite();
+            ONBreakAction?.Invoke(this);
+            ONUpdateStateAction?.Invoke(this);
         }
         
         
@@ -57,7 +67,8 @@ namespace TaskManagment
 
             IsWorking = true;
             UpdateSprite();
-            OnFixAction?.Invoke();
+            ONFixAction?.Invoke(this);
+            ONUpdateStateAction?.Invoke(this);
         }
 
         public void OnInteract(Organizer organizer)
