@@ -5,7 +5,6 @@ using DG.Tweening;
 using Rhythm;
 using Unity.VisualScripting;
 using UnityEngine;
-using UnityEngine.InputSystem;
 
 public delegate void OnNoteHitListener(RhythmTrack.Note note, float score);
 
@@ -27,8 +26,10 @@ public class RhythmGamePlayer : MonoBehaviour
     public IReadOnlyList<DisplayNote> DisplayedNotes => currentDisplayNotes;
     
     public event Action<RhythmTrack.Note, float> OnNoteHitListener;
-    public event Action OnNoteMissListener; 
+    public event Action OnNoteMissListener;
 
+    public bool isVRPlayerPresent = false;
+    
     private RhythmTrack currentTrack;
     private int currentTrackNote;
     private float currentAudioMix;
@@ -37,11 +38,21 @@ public class RhythmGamePlayer : MonoBehaviour
     private readonly List<RhythmTrack.Note> currentNotes = new();
     private readonly HashSet<RhythmTrack.Note> hitNotes = new();
     private readonly List<DisplayNote> currentDisplayNotes = new();
+    private readonly List<Callback> playCallbacks = new();
     private PlayStats stats;
 
     private void Awake()
     {
         Instance = this;
+    }
+
+    public void AddCallback(float time, Action action)
+    {
+        playCallbacks.Add(new Callback
+        {
+            time = time,
+            action = action
+        });
     }
 
     public void PlayTrack(RhythmTrack track)
@@ -64,7 +75,7 @@ public class RhythmGamePlayer : MonoBehaviour
 
     private void LateUpdate()
     {
-        if(Keyboard.current.digit1Key.wasPressedThisFrame)
+        /*if(Keyboard.current.digit1Key.wasPressedThisFrame)
             Hit(0);
         
         if(Keyboard.current.digit2Key.wasPressedThisFrame)
@@ -74,7 +85,7 @@ public class RhythmGamePlayer : MonoBehaviour
             Hit((DrumChannel) 2);
         
         if(Keyboard.current.digit4Key.wasPressedThisFrame)
-            Hit((DrumChannel) 3);
+            Hit((DrumChannel) 3);*/
     }
 
     public void OnEnable()
@@ -155,6 +166,7 @@ public class RhythmGamePlayer : MonoBehaviour
     private void OnNoteMiss()
     {
         stats.misses++;
+        stats.combo = 0;
 
         AnimateAudioMix(0f);
         OnNoteMissListener?.Invoke();
@@ -166,6 +178,10 @@ public class RhythmGamePlayer : MonoBehaviour
     {
         stats.normalizedScore += score;
         stats.hits++;
+        stats.combo++;
+
+        if (stats.combo > stats.maxCombo)
+            stats.maxCombo = stats.combo;
 
         if (score == 1f)
             stats.perfectHits++;
@@ -178,7 +194,24 @@ public class RhythmGamePlayer : MonoBehaviour
 
     private void Update()
     {
-        UpdateDisplayNotes();
+        if (isVRPlayerPresent)
+            UpdateDisplayNotes();
+
+        UpdateCallbacks();
+    }
+
+    private void UpdateCallbacks()
+    {
+        for (var i = playCallbacks.Count - 1; i >= 0; i--)
+        {
+            var callback = playCallbacks[i];
+
+            if (goodTrackSource.time > callback.time)
+            {
+                callback.action?.Invoke();
+                playCallbacks.RemoveAt(i);
+            }
+        }
     }
 
     private void UpdateDisplayNotes()
@@ -340,5 +373,13 @@ public class RhythmGamePlayer : MonoBehaviour
         public int perfectHits;
         public int hits;
         public int misses;
+        public int combo;
+        public int maxCombo;
+    }
+    
+    private struct Callback
+    {
+        public float time;
+        public Action action;
     }
 }
