@@ -86,6 +86,7 @@ MonoBehaviour:
     m_PreInfinity: 2
     m_PostInfinity: 2
     m_RotationOrder: 4
+  isVRPlayerPresent: 0
 --- !u!1 &1325141370558346896
 GameObject:
   m_ObjectHideFlags: 0
@@ -132,7 +133,7 @@ AudioSource:
   OutputAudioMixerGroup: {fileID: 0}
   m_audioClip: {fileID: 0}
   m_PlayOnAwake: 1
-  m_Volume: 0.2
+  m_Volume: 1
   m_Pitch: 1
   Loop: 0
   Mute: 0
@@ -223,7 +224,7 @@ AudioHighPassFilter:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1325141370558346896}
-  m_Enabled: 1
+  m_Enabled: 0
   m_CutoffFrequency: 1505
   m_HighpassResonanceQ: 1
 --- !u!169 &1325141370558346899
@@ -233,7 +234,7 @@ AudioLowPassFilter:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1325141370558346896}
-  m_Enabled: 1
+  m_Enabled: 0
   serializedVersion: 3
   m_LowpassResonanceQ: 1
   lowpassLevelCustomCurve:

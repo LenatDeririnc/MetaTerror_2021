@@ -145,6 +145,45 @@ public partial class @PlayerControls : IInputActionCollection2, IDisposable
                     ""isPartOfComposite"": false
                 }
             ]
+        },
+        {
+            ""name"": ""VRPlayer"",
+            ""id"": ""8feda545-2e96-4a7d-b182-5dbbb2e4f66e"",
+            ""actions"": [
+                {
+                    ""name"": ""Recenter"",
+                    ""type"": ""Button"",
+                    ""id"": ""0c9f4b4c-3e05-475e-af13-b0f356fdf187"",
+                    ""expectedControlType"": ""Button"",
+                    ""processors"": """",
+                    ""interactions"": """",
+                    ""initialStateCheck"": false
+                }
+            ],
+            ""bindings"": [
+                {
+                    ""name"": """",
+                    ""id"": ""dfe33a9b-d0c0-4ae5-9c8f-451114e95dc3"",
+                    ""path"": ""<OpenVROculusTouchController>/primaryButton"",
+                    ""interactions"": """",
+                    ""processors"": """",
+                    ""groups"": """",
+                    ""action"": ""Recenter"",
+                    ""isComposite"": false,
+                    ""isPartOfComposite"": false
+                },
+                {
+                    ""name"": """",
+                    ""id"": ""4c2c43cf-8e4c-4c1b-ba60-910e1eafa4d9"",
+                    ""path"": ""<WMRSpatialController>/touchpadClicked"",
+                    ""interactions"": """",
+                    ""processors"": """",
+                    ""groups"": """",
+                    ""action"": ""Recenter"",
+                    ""isComposite"": false,
+                    ""isPartOfComposite"": false
+                }
+            ]
         }
     ],
     ""controlSchemes"": []
@@ -154,6 +193,9 @@ public partial class @PlayerControls : IInputActionCollection2, IDisposable
         m_Organizer_Movement = m_Organizer.FindAction("Movement", throwIfNotFound: true);
         m_Organizer_Look = m_Organizer.FindAction("Look", throwIfNotFound: true);
         m_Organizer_Interact = m_Organizer.FindAction("Interact", throwIfNotFound: true);
+        // VRPlayer
+        m_VRPlayer = asset.FindActionMap("VRPlayer", throwIfNotFound: true);
+        m_VRPlayer_Recenter = m_VRPlayer.FindAction("Recenter", throwIfNotFound: true);
     }
 
     public void Dispose()
@@ -258,10 +300,47 @@ public partial class @PlayerControls : IInputActionCollection2, IDisposable
         }
     }
     public OrganizerActions @Organizer => new OrganizerActions(this);
+
+    // VRPlayer
+    private readonly InputActionMap m_VRPlayer;
+    private IVRPlayerActions m_VRPlayerActionsCallbackInterface;
+    private readonly InputAction m_VRPlayer_Recenter;
+    public struct VRPlayerActions
+    {
+        private @PlayerControls m_Wrapper;
+        public VRPlayerActions(@PlayerControls wrapper) { m_Wrapper = wrapper; }
+        public InputAction @Recenter => m_Wrapper.m_VRPlayer_Recenter;
+        public InputActionMap Get() { return m_Wrapper.m_VRPlayer; }
+        public void Enable() { Get().Enable(); }
+        public void Disable() { Get().Disable(); }
+        public bool enabled => Get().enabled;
+        public static implicit operator InputActionMap(VRPlayerActions set) { return set.Get(); }
+        public void SetCallbacks(IVRPlayerActions instance)
+        {
+            if (m_Wrapper.m_VRPlayerActionsCallbackInterface != null)
+            {
+                @Recenter.started -= m_Wrapper.m_VRPlayerActionsCallbackInterface.OnRecenter;
+                @Recenter.performed -= m_Wrapper.m_VRPlayerActionsCallbackInterface.OnRecenter;
+                @Recenter.canceled -= m_Wrapper.m_VRPlayerActionsCallbackInterface.OnRecenter;
+            }
+            m_Wrapper.m_VRPlayerActionsCallbackInterface = instance;
+            if (instance != null)
+            {
+                @Recenter.started += instance.OnRecenter;
+                @Recenter.performed += instance.OnRecenter;
+                @Recenter.canceled += instance.OnRecenter;
+            }
+        }
+    }
+    public VRPlayerActions @VRPlayer => new VRPlayerActions(this);
     public interface IOrganizerActions
     {
         void OnMovement(InputAction.CallbackContext context);
         void OnLook(InputAction.CallbackContext context);
         void OnInteract(InputAction.CallbackContext context);
+    }
+    public interface IVRPlayerActions
+    {
+        void OnRecenter(InputAction.CallbackContext context);
     }
 }
