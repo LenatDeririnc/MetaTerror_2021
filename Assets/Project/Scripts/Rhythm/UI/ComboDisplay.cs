@@ -5,11 +5,19 @@ using UnityEngine;
 public class ComboDisplay : MonoBehaviour
 {
     public TMP_Text comboText;
+    public CanvasGroup displayGroup;
 
     public Color comboAddColor = Color.green;
     public Color comboBreakColor = Color.red;
 
     private int lastCombo;
+    private bool isAppearing;
+    private float currentAlpha;
+
+    private void Awake()
+    {
+        displayGroup.alpha = 0f;
+    }
     
     private void Update()
     {
@@ -40,6 +48,20 @@ public class ComboDisplay : MonoBehaviour
             }
 
             lastCombo = currentCombo;
+
+            FlashCombo();
         }
+    }
+
+    private void FlashCombo(
+        float fadeInDuration = 0.1f, 
+        float showDuration = 0.2f, 
+        float fadeDuration = 0.3f)
+    {
+        DOTween.Kill(this);
+        DOTween.Sequence()
+            .Append(displayGroup.DOFade(1f, fadeInDuration))
+            .Insert(fadeInDuration + showDuration, displayGroup.DOFade(0f, fadeDuration))
+            .SetTarget(this);
     }
 }

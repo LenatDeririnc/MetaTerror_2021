@@ -14,6 +14,9 @@ public class RhythmGamePlayer : MonoBehaviour
 {
     public static RhythmGamePlayer Instance { get; private set; }
     
+    public float Duration => goodTrackSource.clip.length;
+    public float Position => currentPlaybackTime;
+    
     public RhythmTrack startTrack;
     public AudioSource goodTrackSource;
     public AudioSource badTrackSource;
@@ -42,6 +45,9 @@ public class RhythmGamePlayer : MonoBehaviour
     private readonly List<DisplayNote> currentDisplayNotes = new();
     private readonly List<Callback> playCallbacks = new();
     private PlayStats stats;
+
+    private float currentPlaybackTime;
+    private float lastSourceTime;
 
     private void Awake()
     {
@@ -90,6 +96,23 @@ public class RhythmGamePlayer : MonoBehaviour
             Hit((DrumChannel) 3);
     }
 
+    private void UpdateCurrentTime()
+    {
+        var newSourceTime = goodTrackSource.time;
+
+        if (goodTrackSource.isPlaying) 
+            currentPlaybackTime += Time.deltaTime;
+
+        if (lastSourceTime != newSourceTime)
+        {
+            var diff = Mathf.Abs(lastSourceTime - newSourceTime);
+            lastSourceTime = newSourceTime;
+
+            if (diff < 0.05f)
+                currentPlaybackTime = newSourceTime;
+        }
+    }
+
     public bool GetScore(DrumChannel channel, out float score, out RhythmTrack.Note note)
     {
         score = 0;
@@ -97,8 +120,8 @@ public class RhythmGamePlayer : MonoBehaviour
         
         if(scoringCurve.length == 0)
             return false;
-        
-        var currentTime = goodTrackSource.time + noteOffset;
+
+        var currentTime = currentPlaybackTime + noteOffset;
         var noteOnOffset = scoringCurve.keys[0].time;
         var noteOffOffset = scoringCurve.keys[scoringCurve.length - 1].time;
         var hasHit = false;
@@ -199,6 +222,7 @@ public class RhythmGamePlayer : MonoBehaviour
         if (isVRPlayerPresent)
             UpdateDisplayNotes();
 
+        UpdateCurrentTime();
         UpdateCallbacks();
     }
 
@@ -208,7 +232,7 @@ public class RhythmGamePlayer : MonoBehaviour
         {
             var callback = playCallbacks[i];
 
-            if (goodTrackSource.time > callback.time)
+            if (currentPlaybackTime > callback.time)
             {
                 callback.action?.Invoke();
                 playCallbacks.RemoveAt(i);
@@ -221,7 +245,7 @@ public class RhythmGamePlayer : MonoBehaviour
         if (currentTrack == null)
             return;
         
-        var currentTime = goodTrackSource.time + noteOffset;
+        var currentTime = currentPlaybackTime + noteOffset;
         var curveEnd = scoringCurve[scoringCurve.length - 1].time;
 
         var noteStartTime = currentTime + noteShowDuration;
