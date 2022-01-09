@@ -10,6 +10,10 @@ namespace Rhythm
         public Transform recenterTarget;
         public Transform cameraTransform;
         public Transform rigRootTransform;
+
+        public HandType handType;
+        public GameObject[] drummerHands;
+        public GameObject[] pianistHands;
         
         public InputActionReference recenter;
 
@@ -17,8 +21,16 @@ namespace Rhythm
         {
             RhythmGamePlayer.Instance.isVRPlayerPresent = true;
             StartCoroutine(Init());
+            SetEnabled(drummerHands, handType == HandType.Drummer);
+            SetEnabled(pianistHands, handType == HandType.Pianist);
             
             recenter.asset.Enable();
+        }
+
+        private void SetEnabled(GameObject[] obj, bool isActive)
+        {
+            foreach (var o in obj)
+                o.SetActive(isActive);
         }
 
         private IEnumerator Init()
@@ -45,6 +57,12 @@ namespace Rhythm
                 XRGeneralSettings.Instance.Manager.StopSubsystems();
                 XRGeneralSettings.Instance.Manager.DeinitializeLoader();
             }
+        }
+        
+        public enum HandType
+        {
+            Drummer,
+            Pianist
         }
     }
 }

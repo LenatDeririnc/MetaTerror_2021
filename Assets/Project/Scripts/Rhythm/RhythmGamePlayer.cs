@@ -14,7 +14,7 @@ public class RhythmGamePlayer : MonoBehaviour
 {
     public static RhythmGamePlayer Instance { get; private set; }
     
-    public float Duration => goodTrackSource.clip.length;
+    public float Duration => goodTrackSource.clip ? goodTrackSource.clip.length : 0f;
     public float Position => currentPlaybackTime;
     
     public RhythmTrack startTrack;
@@ -24,6 +24,8 @@ public class RhythmGamePlayer : MonoBehaviour
     public float noteOffset;
     public float noteShowDuration;
     public float playbackSpeed = 1f;
+    public float minHitScore = 100f;
+    public float maxHitScore = 150f;
     public AnimationCurve scoringCurve;
 
     public PlayStats Stats => stats;
@@ -204,6 +206,7 @@ public class RhythmGamePlayer : MonoBehaviour
         stats.normalizedScore += score;
         stats.hits++;
         stats.combo++;
+        stats.score += Mathf.Lerp(minHitScore, maxHitScore, score);
 
         if (stats.combo > stats.maxCombo)
             stats.maxCombo = stats.combo;
@@ -399,6 +402,7 @@ public class RhythmGamePlayer : MonoBehaviour
     public struct PlayStats
     {
         public float normalizedScore;
+        public float score;
         public int perfectHits;
         public int hits;
         public int misses;
