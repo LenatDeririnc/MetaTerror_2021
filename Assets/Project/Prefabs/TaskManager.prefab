@@ -44,8 +44,9 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 4493ebcdfa204cafac9d3bb32f8b36ff, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  StartOnLoadScene: 0
   debugInfo: 0
   gameScoreModifier: 1
-  breakSoundEffect: {fileID: 8300000, guid: f66fd0a642a27624e93267173be8972e, type: 3}
+  breakSoundEffect: {fileID: 8300000, guid: d249261e9ad5cc44eb04cb456008b721, type: 3}
   breakTimeIntervalInSeconds: 10
   scoreTimeIntervalInSeconds: 0.3
