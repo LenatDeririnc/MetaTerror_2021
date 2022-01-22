@@ -2699,7 +2699,7 @@ GameObject:
   - component: {fileID: 37340843}
   - component: {fileID: 37340842}
   - component: {fileID: 37340845}
-  m_Layer: 0
+  m_Layer: 6
   m_Name: Cube (24)
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -3041,7 +3041,7 @@ GameObject:
   - component: {fileID: 77711796}
   - component: {fileID: 77711795}
   - component: {fileID: 77711798}
-  m_Layer: 0
+  m_Layer: 6
   m_Name: Cube (8)
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -3692,7 +3692,7 @@ GameObject:
   - component: {fileID: 126101512}
   - component: {fileID: 126101511}
   - component: {fileID: 126101514}
-  m_Layer: 0
+  m_Layer: 6
   m_Name: Cube (10)
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -3808,7 +3808,7 @@ GameObject:
   - component: {fileID: 129271981}
   - component: {fileID: 129271980}
   - component: {fileID: 129271983}
-  m_Layer: 0
+  m_Layer: 6
   m_Name: Cube (17)
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -6046,7 +6046,7 @@ GameObject:
   - component: {fileID: 196272962}
   - component: {fileID: 196272961}
   - component: {fileID: 196272964}
-  m_Layer: 2
+  m_Layer: 6
   m_Name: Cube (18)
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -7490,7 +7490,7 @@ GameObject:
   - component: {fileID: 264206589}
   - component: {fileID: 264206588}
   - component: {fileID: 264206587}
-  m_Layer: 0
+  m_Layer: 6
   m_Name: Cube (28)
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -11754,7 +11754,7 @@ GameObject:
   - component: {fileID: 474641645}
   - component: {fileID: 474641644}
   - component: {fileID: 474641643}
-  m_Layer: 2
+  m_Layer: 6
   m_Name: Cube (26)
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -12618,7 +12618,7 @@ GameObject:
   - component: {fileID: 511869533}
   - component: {fileID: 511869532}
   - component: {fileID: 511869535}
-  m_Layer: 0
+  m_Layer: 6
   m_Name: Cube (23)
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -15332,7 +15332,7 @@ GameObject:
   - component: {fileID: 650678344}
   - component: {fileID: 650678343}
   - component: {fileID: 650678346}
-  m_Layer: 0
+  m_Layer: 6
   m_Name: Cube (12)
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -19798,7 +19798,7 @@ GameObject:
   - component: {fileID: 923692503}
   - component: {fileID: 923692502}
   - component: {fileID: 923692505}
-  m_Layer: 0
+  m_Layer: 6
   m_Name: Cube (20)
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -21090,7 +21090,7 @@ GameObject:
   - component: {fileID: 1000966486}
   - component: {fileID: 1000966485}
   - component: {fileID: 1000966484}
-  m_Layer: 2
+  m_Layer: 6
   m_Name: Cube (25)
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -21951,7 +21951,7 @@ GameObject:
   - component: {fileID: 1024764224}
   - component: {fileID: 1024764223}
   - component: {fileID: 1024764226}
-  m_Layer: 0
+  m_Layer: 6
   m_Name: Cube (19)
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -22226,10 +22226,6 @@ PrefabInstance:
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
       objectReference: {fileID: 0}
-    - target: {fileID: 5735777932306157280, guid: ec83a45f58d93d64a90d865428a69690, type: 3}
-      propertyPath: m_Sprite
-      value: 
-      objectReference: {fileID: 21300000, guid: f0d70c4a35620ad4296d1accb7de2d40, type: 3}
     - target: {fileID: 5735777932306157286, guid: ec83a45f58d93d64a90d865428a69690, type: 3}
       propertyPath: m_LocalScale.x
       value: 1.5
@@ -22325,10 +22321,6 @@ PrefabInstance:
       propertyPath: m_IsActive
       value: 1
       objectReference: {fileID: 0}
-    - target: {fileID: 3104466024839055140, guid: ce0b7f5729c871441b87b06a4975cf13, type: 3}
-      propertyPath: m_Sprite
-      value: 
-      objectReference: {fileID: 21300000, guid: 95c2f54255228fb409da2eca6af2b4bc, type: 3}
     - target: {fileID: 3104466024839055140, guid: ce0b7f5729c871441b87b06a4975cf13, type: 3}
       propertyPath: m_Materials.Array.data[0]
       value: 
@@ -23799,7 +23791,7 @@ GameObject:
   - component: {fileID: 1133524296}
   - component: {fileID: 1133524295}
   - component: {fileID: 1133524298}
-  m_Layer: 0
+  m_Layer: 6
   m_Name: Cube (16)
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -25202,7 +25194,7 @@ GameObject:
   - component: {fileID: 1197644312}
   - component: {fileID: 1197644311}
   - component: {fileID: 1197644314}
-  m_Layer: 0
+  m_Layer: 6
   m_Name: Cube (14)
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -25945,7 +25937,7 @@ GameObject:
   - component: {fileID: 1228485317}
   - component: {fileID: 1228485316}
   - component: {fileID: 1228485319}
-  m_Layer: 0
+  m_Layer: 6
   m_Name: Cube (5)
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -28995,7 +28987,7 @@ GameObject:
   - component: {fileID: 1424339649}
   - component: {fileID: 1424339648}
   - component: {fileID: 1424339651}
-  m_Layer: 0
+  m_Layer: 6
   m_Name: Cube (11)
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -31470,7 +31462,7 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 1539973242}
-  m_Layer: 0
+  m_Layer: 6
   m_Name: GameObject
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -31506,7 +31498,7 @@ GameObject:
   - component: {fileID: 1540698446}
   - component: {fileID: 1540698445}
   - component: {fileID: 1540698448}
-  m_Layer: 0
+  m_Layer: 6
   m_Name: Cube (15)
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -34251,10 +34243,6 @@ PrefabInstance:
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
       objectReference: {fileID: 0}
-    - target: {fileID: 5735777932306157280, guid: ec83a45f58d93d64a90d865428a69690, type: 3}
-      propertyPath: m_Sprite
-      value: 
-      objectReference: {fileID: 21300000, guid: f0d70c4a35620ad4296d1accb7de2d40, type: 3}
     - target: {fileID: 5735777932306157286, guid: ec83a45f58d93d64a90d865428a69690, type: 3}
       propertyPath: m_LocalScale.x
       value: 1.5
@@ -34368,7 +34356,7 @@ GameObject:
   - component: {fileID: 1689299854}
   - component: {fileID: 1689299853}
   - component: {fileID: 1689299856}
-  m_Layer: 0
+  m_Layer: 6
   m_Name: Cube (13)
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -35031,7 +35019,7 @@ GameObject:
   - component: {fileID: 1711880080}
   - component: {fileID: 1711880079}
   - component: {fileID: 1711880082}
-  m_Layer: 0
+  m_Layer: 6
   m_Name: Cube (9)
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -36638,7 +36626,7 @@ GameObject:
   - component: {fileID: 1785665987}
   - component: {fileID: 1785665986}
   - component: {fileID: 1785665985}
-  m_Layer: 2
+  m_Layer: 6
   m_Name: Cube (27)
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -37306,7 +37294,7 @@ SpriteRenderer:
   m_SortingLayerID: 0
   m_SortingLayer: 0
   m_SortingOrder: 0
-  m_Sprite: {fileID: 21300000, guid: 305059807c068c342bd16e27257bf464, type: 3}
+  m_Sprite: {fileID: 21300000, guid: 938eac52163af4e41b29877fd1ddcf95, type: 3}
   m_Color: {r: 1, g: 1, b: 1, a: 1}
   m_FlipX: 0
   m_FlipY: 0
@@ -37396,7 +37384,7 @@ GameObject:
   - component: {fileID: 1807459696}
   - component: {fileID: 1807459695}
   - component: {fileID: 1807459698}
-  m_Layer: 0
+  m_Layer: 6
   m_Name: Cube (22)
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -37622,7 +37610,7 @@ GameObject:
   - component: {fileID: 1839211754}
   - component: {fileID: 1839211753}
   - component: {fileID: 1839211756}
-  m_Layer: 0
+  m_Layer: 6
   m_Name: Cube (6)
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -40586,7 +40574,7 @@ GameObject:
   - component: {fileID: 1951449557}
   - component: {fileID: 1951449556}
   - component: {fileID: 1951449559}
-  m_Layer: 0
+  m_Layer: 6
   m_Name: Cube (7)
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -43330,7 +43318,7 @@ GameObject:
   - component: {fileID: 2068768918}
   - component: {fileID: 2068768917}
   - component: {fileID: 2068768920}
-  m_Layer: 0
+  m_Layer: 6
   m_Name: Cube (21)
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -43752,10 +43740,6 @@ PrefabInstance:
       propertyPath: m_Name
       value: Elecric BUDKA
       objectReference: {fileID: 0}
-    - target: {fileID: 3104466024839055140, guid: ce0b7f5729c871441b87b06a4975cf13, type: 3}
-      propertyPath: m_Sprite
-      value: 
-      objectReference: {fileID: 21300000, guid: 2f36d53ac84458c4b944184e9fe7beb6, type: 3}
     - target: {fileID: 3104466024839055140, guid: ce0b7f5729c871441b87b06a4975cf13, type: 3}
       propertyPath: m_Materials.Array.data[0]
       value: 
@@ -44299,7 +44283,7 @@ GameObject:
   - component: {fileID: 2099833820}
   - component: {fileID: 2099833819}
   - component: {fileID: 2099833822}
-  m_Layer: 0
+  m_Layer: 6
   m_Name: Cube (8)
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -45130,7 +45114,7 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 2117493417}
-  m_Layer: 0
+  m_Layer: 6
   m_Name: NotVisible
   m_TagString: Untagged
   m_Icon: {fileID: 0}
