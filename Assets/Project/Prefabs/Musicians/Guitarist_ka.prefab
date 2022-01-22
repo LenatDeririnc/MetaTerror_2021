@@ -230,13 +230,17 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: -2760730043326370099, guid: 4165aa704cf4a554a892ce3aa000159e, type: 3}
       propertyPath: m_IsActive
-      value: 0
+      value: 1
       objectReference: {fileID: 0}
     - target: {fileID: -2479673639765776216, guid: 4165aa704cf4a554a892ce3aa000159e, type: 3}
       propertyPath: m_UpdateWhenOffscreen
       value: 1
       objectReference: {fileID: 0}
     - target: {fileID: -353372587773029086, guid: 4165aa704cf4a554a892ce3aa000159e, type: 3}
+      propertyPath: m_IsActive
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 357344144889231236, guid: 4165aa704cf4a554a892ce3aa000159e, type: 3}
       propertyPath: m_IsActive
       value: 0
       objectReference: {fileID: 0}
