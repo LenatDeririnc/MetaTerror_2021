@@ -408,8 +408,8 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   recenterTarget: {fileID: 0}
-  cameraTransform: {fileID: 0}
-  rigRootTransform: {fileID: 0}
+  cameraTransform: {fileID: 5261764671112713234}
+  rigRootTransform: {fileID: 5261764672539382430}
   handType: 0
   drummerHands:
   - {fileID: 669124936842003828}
@@ -417,7 +417,8 @@ MonoBehaviour:
   pianistHands:
   - {fileID: 4072383028560627435}
   - {fileID: 7526797159945131799}
-  recenter: {fileID: 0}
+  recenter: {fileID: 8383906347357435846, guid: d04902f11fe1a35409fd7431259d6667, type: 3}
+  particle: {fileID: 0}
 --- !u!1001 &2898119831380501964
 PrefabInstance:
   m_ObjectHideFlags: 0

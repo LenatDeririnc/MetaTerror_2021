@@ -73,6 +73,7 @@ GameObject:
   m_Component:
   - component: {fileID: 5624507632640729056}
   - component: {fileID: 5624507632640729057}
+  - component: {fileID: 5493269706070799977}
   m_Layer: 0
   m_Name: DrumStick
   m_TagString: Untagged
@@ -94,6 +95,7 @@ Transform:
   m_Children:
   - {fileID: 5624507632044601314}
   - {fileID: 5624507631911971215}
+  - {fileID: 9182024545014239551}
   m_Father: {fileID: 0}
   m_RootOrder: 0
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
@@ -114,6 +116,96 @@ MonoBehaviour:
     serializedVersion: 2
     m_Bits: 4294967291
   minHitSpeed: 1
+  particle: {fileID: 5493269706070799977}
+--- !u!114 &5493269706070799977
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 5624507632640729058}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 4d232f6611f84832aae476cdadf9871a, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  particleObjectAsset: {fileID: 4240938577603624387, guid: d6329258dd7885741948a84a4b8914d0, type: 3}
+--- !u!1 &7531402060574313394
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 9182024545014239551}
+  - component: {fileID: 1433514911775811362}
+  - component: {fileID: 5613605762345000889}
+  - component: {fileID: 4030134803096804610}
+  m_Layer: 8
+  m_Name: trigger
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!4 &9182024545014239551
+Transform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 7531402060574313394}
+  m_LocalRotation: {x: -0.70710576, y: -0, z: -0, w: 0.70710784}
+  m_LocalPosition: {x: 0, y: 0, z: -0.0029}
+  m_LocalScale: {x: 0.014995218, y: 0.12801553, z: 0.014995218}
+  m_ConstrainProportionsScale: 0
+  m_Children: []
+  m_Father: {fileID: 5624507632640729056}
+  m_RootOrder: 2
+  m_LocalEulerAnglesHint: {x: -90, y: 0, z: 0}
+--- !u!33 &1433514911775811362
+MeshFilter:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 7531402060574313394}
+  m_Mesh: {fileID: 10208, guid: 0000000000000000e000000000000000, type: 0}
+--- !u!136 &5613605762345000889
+CapsuleCollider:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 7531402060574313394}
+  m_Material: {fileID: 0}
+  m_IsTrigger: 0
+  m_Enabled: 1
+  m_Radius: 0.5
+  m_Height: 2
+  m_Direction: 1
+  m_Center: {x: 0, y: 0, z: 0}
+--- !u!114 &4030134803096804610
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 7531402060574313394}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 2bb1d812ce604a6784bcf7ce8d794153, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  _drumStick: {fileID: 5624507632640729057}
+  _capsuleCast:
+    height: 0.23
+    radius: 0.5
+    offset: {x: 0, y: 0, z: 0}
+    layerMask:
+      serializedVersion: 2
+      m_Bits: 256
 --- !u!1001 &345697804056097784
 PrefabInstance:
   m_ObjectHideFlags: 0

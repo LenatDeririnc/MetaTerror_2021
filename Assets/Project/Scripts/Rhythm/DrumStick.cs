@@ -5,6 +5,7 @@ public class DrumStick : MonoBehaviour
     public Transform tipTransform;
     public LayerMask drumLayerMask = Physics.DefaultRaycastLayers;
     public float minHitSpeed = 1f;
+    public ParticleBuilder particle;
 
     private Vector3 lastPosition;
 
@@ -31,7 +32,7 @@ public class DrumStick : MonoBehaviour
             }
         }
         
-        Debug.DrawLine(lastPosition, newPosition, Color.magenta, 0.25f);
+        // Debug.DrawLine(lastPosition, newPosition, Color.magenta, 0.25f);
         lastPosition = newPosition;
     }
 }
