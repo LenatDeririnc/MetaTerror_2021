@@ -11803,7 +11803,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 1
+  m_IsActive: 0
 --- !u!4 &474292509
 Transform:
   m_ObjectHideFlags: 0
@@ -31179,6 +31179,18 @@ PrefabInstance:
       propertyPath: m_Layer
       value: 0
       objectReference: {fileID: 0}
+    - target: {fileID: 961032604401936008, guid: fab994edb774cdc4b8c0fbe6e75abc63, type: 3}
+      propertyPath: m_LocalPosition.z
+      value: 2.2
+      objectReference: {fileID: 0}
+    - target: {fileID: 961032604401936008, guid: fab994edb774cdc4b8c0fbe6e75abc63, type: 3}
+      propertyPath: m_AnchoredPosition.x
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 961032604401936008, guid: fab994edb774cdc4b8c0fbe6e75abc63, type: 3}
+      propertyPath: m_AnchoredPosition.y
+      value: 9.799988
+      objectReference: {fileID: 0}
     - target: {fileID: 993705331660098875, guid: fab994edb774cdc4b8c0fbe6e75abc63, type: 3}
       propertyPath: m_Layer
       value: 0
@@ -31615,6 +31627,10 @@ PrefabInstance:
       propertyPath: m_Layer
       value: 0
       objectReference: {fileID: 0}
+    - target: {fileID: 6474457670366003687, guid: fab994edb774cdc4b8c0fbe6e75abc63, type: 3}
+      propertyPath: m_text
+      value: COMBO
+      objectReference: {fileID: 0}
     - target: {fileID: 6589977761701884160, guid: fab994edb774cdc4b8c0fbe6e75abc63, type: 3}
       propertyPath: m_Layer
       value: 0
@@ -31711,6 +31727,18 @@ PrefabInstance:
       propertyPath: m_Layer
       value: 0
       objectReference: {fileID: 0}
+    - target: {fileID: 8427316445288438891, guid: fab994edb774cdc4b8c0fbe6e75abc63, type: 3}
+      propertyPath: m_text
+      value: 0001
+      objectReference: {fileID: 0}
+    - target: {fileID: 8427316445288438891, guid: fab994edb774cdc4b8c0fbe6e75abc63, type: 3}
+      propertyPath: m_fontAsset
+      value: 
+      objectReference: {fileID: 11400000, guid: 5302535af1044152a457ed104f1f4b91, type: 2}
+    - target: {fileID: 8427316445288438891, guid: fab994edb774cdc4b8c0fbe6e75abc63, type: 3}
+      propertyPath: m_sharedMaterial
+      value: 
+      objectReference: {fileID: 2164040, guid: 5302535af1044152a457ed104f1f4b91, type: 2}
     - target: {fileID: 8438845219186324334, guid: fab994edb774cdc4b8c0fbe6e75abc63, type: 3}
       propertyPath: m_Layer
       value: 0
