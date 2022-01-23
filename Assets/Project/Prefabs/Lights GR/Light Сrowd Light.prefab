@@ -9,6 +9,7 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 1869084484627466775}
+  - component: {fileID: 5730138982997952428}
   m_Layer: 0
   m_Name: "Light \u0421rowd Light"
   m_TagString: Untagged
@@ -34,6 +35,21 @@ Transform:
   m_Father: {fileID: 0}
   m_RootOrder: 0
   m_LocalEulerAnglesHint: {x: 180, y: 0, z: 0}
+--- !u!114 &5730138982997952428
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1349816287422468269}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: dd27b3f9a068d6f4d87e5e8f4b230754, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  channel: 0
+  light: {fileID: 8111794219611673230}
+  lightFadeDuration: 0.5
 --- !u!1 &1633399462772345236
 GameObject:
   m_ObjectHideFlags: 0
@@ -478,20 +494,20 @@ Light:
   serializedVersion: 10
   m_Type: 0
   m_Shape: 0
-  m_Color: {r: 1, g: 1, b: 1, a: 1}
-  m_Intensity: 100
-  m_Range: 10
-  m_SpotAngle: 39.972137
+  m_Color: {r: 1, g: 0.8675709, b: 0, a: 1}
+  m_Intensity: 300
+  m_Range: 50
+  m_SpotAngle: 75
   m_InnerSpotAngle: 28.54992
   m_CookieSize: 10
   m_Shadows:
-    m_Type: 2
+    m_Type: 1
     m_Resolution: -1
     m_CustomResolution: -1
-    m_Strength: 0.269
+    m_Strength: 0.45
     m_Bias: 0.01
     m_NormalBias: 0.4
-    m_NearPlane: 6.28
+    m_NearPlane: 0.55
     m_CullingMatrixOverride:
       e00: 1
       e01: 0
