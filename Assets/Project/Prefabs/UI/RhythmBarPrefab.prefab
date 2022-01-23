@@ -412,7 +412,7 @@ ParticleSystem:
       serializedVersion: 2
       minMaxState: 0
       minColor: {r: 1, g: 1, b: 1, a: 1}
-      maxColor: {r: 0.6509804, g: 0, b: 0, a: 1}
+      maxColor: {r: 1, g: 0.6745098, b: 0.20392157, a: 1}
       maxGradient:
         serializedVersion: 2
         key0: {r: 1, g: 1, b: 1, a: 1}
@@ -474,7 +474,7 @@ ParticleSystem:
     startSize:
       serializedVersion: 2
       minMaxState: 3
-      scalar: 0.2
+      scalar: 0.02
       minScalar: 0.1
       maxCurve:
         serializedVersion: 2
@@ -527,8 +527,8 @@ ParticleSystem:
     startSizeY:
       serializedVersion: 2
       minMaxState: 3
-      scalar: 1
-      minScalar: 1
+      scalar: 0.2
+      minScalar: 0.2
       maxCurve:
         serializedVersion: 2
         m_Curve:
@@ -580,8 +580,8 @@ ParticleSystem:
     startSizeZ:
       serializedVersion: 2
       minMaxState: 3
-      scalar: 1
-      minScalar: 1
+      scalar: 0.2
+      minScalar: 0.2
       maxCurve:
         serializedVersion: 2
         m_Curve:
@@ -792,7 +792,7 @@ ParticleSystem:
     randomizeRotationDirection: 0
     maxNumParticles: 1000
     customEmitterVelocity: {x: 0, y: 0, z: 0}
-    size3D: 0
+    size3D: 1
     rotation3D: 0
     gravityModifier:
       serializedVersion: 2
@@ -856,9 +856,9 @@ ParticleSystem:
     boxThickness: {x: 0, y: 0, z: 0}
     radiusThickness: 1
     donutRadius: 0.2
-    m_Position: {x: 0, y: 0.21, z: 0.01}
-    m_Rotation: {x: 0, y: 0, z: 0}
-    m_Scale: {x: 0.34, y: 0.1, z: 0.02}
+    m_Position: {x: -0.000000558392, y: 0.17238684, z: 0.023809562}
+    m_Rotation: {x: -0.00004772865, y: -0.00061119144, z: -0.00043654686}
+    m_Scale: {x: 0.34000024, y: 0.10000034, z: 0.020000001}
     placementMode: 0
     m_MeshMaterialIndex: 0
     m_MeshNormalOffset: 0
@@ -1166,7 +1166,7 @@ ParticleSystem:
       countCurve:
         serializedVersion: 2
         minMaxState: 0
-        scalar: 60
+        scalar: 150
         minScalar: 30
         maxCurve:
           serializedVersion: 2
@@ -5026,9 +5026,9 @@ ParticleSystemRenderer:
   m_AutoUVMaxDistance: 0.5
   m_AutoUVMaxAngle: 89
   m_LightmapParameters: {fileID: 0}
-  m_SortingLayerID: 0
-  m_SortingLayer: 0
-  m_SortingOrder: 0
+  m_SortingLayerID: -43124537
+  m_SortingLayer: -1
+  m_SortingOrder: 150
   m_RenderMode: 1
   m_MeshDistribution: 0
   m_SortMode: 0
