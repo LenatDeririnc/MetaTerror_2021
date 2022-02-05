@@ -173,6 +173,54 @@
                     "isPartOfComposite": false
                 }
             ]
+        },
+        {
+            "name": "Creatives",
+            "id": "1975abea-24d4-408a-a9b2-6d05de0d30ff",
+            "actions": [
+                {
+                    "name": "StickParticleLeft",
+                    "type": "Button",
+                    "id": "fc53a7bf-98a4-4659-9a96-10a70a3a5b75",
+                    "expectedControlType": "Button",
+                    "processors": "",
+                    "interactions": "",
+                    "initialStateCheck": false
+                },
+                {
+                    "name": "StickParticleRight",
+                    "type": "Button",
+                    "id": "3852a20f-cf2e-412c-85a1-e073b68af186",
+                    "expectedControlType": "Button",
+                    "processors": "",
+                    "interactions": "",
+                    "initialStateCheck": false
+                }
+            ],
+            "bindings": [
+                {
+                    "name": "",
+                    "id": "74791a49-1428-4d98-ac9f-f1b2fd0cf749",
+                    "path": "<OculusTouchController>{LeftHand}/triggerPressed",
+                    "interactions": "",
+                    "processors": "",
+                    "groups": "",
+                    "action": "StickParticleLeft",
+                    "isComposite": false,
+                    "isPartOfComposite": false
+                },
+                {
+                    "name": "",
+                    "id": "7bc80ca9-d29e-422b-af3f-9e19c279e288",
+                    "path": "<OculusTouchController>{RightHand}/triggerPressed",
+                    "interactions": "",
+                    "processors": "",
+                    "groups": "",
+                    "action": "StickParticleRight",
+                    "isComposite": false,
+                    "isPartOfComposite": false
+                }
+            ]
         }
     ],
     "controlSchemes": []

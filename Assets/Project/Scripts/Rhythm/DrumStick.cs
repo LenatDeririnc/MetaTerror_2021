@@ -1,4 +1,5 @@
 using UnityEngine;
+using UnityEngine.InputSystem;
 
 public class DrumStick : MonoBehaviour
 {
@@ -8,10 +9,16 @@ public class DrumStick : MonoBehaviour
     public ParticleBuilder particle;
 
     private Vector3 lastPosition;
+    
+    public InputActionReference clickForParticle;
+    public Transform particlePosition;
 
     private void Awake()
     {
         lastPosition = tipTransform.position;
+
+        clickForParticle.action.started += _ => particle.Play(particlePosition.position);
+        clickForParticle.action.canceled += _ => particle.Stop();
     }
 
     private void Update()

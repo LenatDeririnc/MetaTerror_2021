@@ -195,6 +195,54 @@ public partial class @PlayerControls : IInputActionCollection2, IDisposable
                     ""isPartOfComposite"": false
                 }
             ]
+        },
+        {
+            ""name"": ""Creatives"",
+            ""id"": ""1975abea-24d4-408a-a9b2-6d05de0d30ff"",
+            ""actions"": [
+                {
+                    ""name"": ""StickParticleLeft"",
+                    ""type"": ""Button"",
+                    ""id"": ""fc53a7bf-98a4-4659-9a96-10a70a3a5b75"",
+                    ""expectedControlType"": ""Button"",
+                    ""processors"": """",
+                    ""interactions"": """",
+                    ""initialStateCheck"": false
+                },
+                {
+                    ""name"": ""StickParticleRight"",
+                    ""type"": ""Button"",
+                    ""id"": ""3852a20f-cf2e-412c-85a1-e073b68af186"",
+                    ""expectedControlType"": ""Button"",
+                    ""processors"": """",
+                    ""interactions"": """",
+                    ""initialStateCheck"": false
+                }
+            ],
+            ""bindings"": [
+                {
+                    ""name"": """",
+                    ""id"": ""74791a49-1428-4d98-ac9f-f1b2fd0cf749"",
+                    ""path"": ""<OculusTouchController>{LeftHand}/triggerPressed"",
+                    ""interactions"": """",
+                    ""processors"": """",
+                    ""groups"": """",
+                    ""action"": ""StickParticleLeft"",
+                    ""isComposite"": false,
+                    ""isPartOfComposite"": false
+                },
+                {
+                    ""name"": """",
+                    ""id"": ""7bc80ca9-d29e-422b-af3f-9e19c279e288"",
+                    ""path"": ""<OculusTouchController>{RightHand}/triggerPressed"",
+                    ""interactions"": """",
+                    ""processors"": """",
+                    ""groups"": """",
+                    ""action"": ""StickParticleRight"",
+                    ""isComposite"": false,
+                    ""isPartOfComposite"": false
+                }
+            ]
         }
     ],
     ""controlSchemes"": []
@@ -207,6 +255,10 @@ public partial class @PlayerControls : IInputActionCollection2, IDisposable
         // VRPlayer
         m_VRPlayer = asset.FindActionMap("VRPlayer", throwIfNotFound: true);
         m_VRPlayer_Recenter = m_VRPlayer.FindAction("Recenter", throwIfNotFound: true);
+        // Creatives
+        m_Creatives = asset.FindActionMap("Creatives", throwIfNotFound: true);
+        m_Creatives_StickParticleLeft = m_Creatives.FindAction("StickParticleLeft", throwIfNotFound: true);
+        m_Creatives_StickParticleRight = m_Creatives.FindAction("StickParticleRight", throwIfNotFound: true);
     }
 
     public void Dispose()
@@ -344,6 +396,47 @@ public partial class @PlayerControls : IInputActionCollection2, IDisposable
         }
     }
     public VRPlayerActions @VRPlayer => new VRPlayerActions(this);
+
+    // Creatives
+    private readonly InputActionMap m_Creatives;
+    private ICreativesActions m_CreativesActionsCallbackInterface;
+    private readonly InputAction m_Creatives_StickParticleLeft;
+    private readonly InputAction m_Creatives_StickParticleRight;
+    public struct CreativesActions
+    {
+        private @PlayerControls m_Wrapper;
+        public CreativesActions(@PlayerControls wrapper) { m_Wrapper = wrapper; }
+        public InputAction @StickParticleLeft => m_Wrapper.m_Creatives_StickParticleLeft;
+        public InputAction @StickParticleRight => m_Wrapper.m_Creatives_StickParticleRight;
+        public InputActionMap Get() { return m_Wrapper.m_Creatives; }
+        public void Enable() { Get().Enable(); }
+        public void Disable() { Get().Disable(); }
+        public bool enabled => Get().enabled;
+        public static implicit operator InputActionMap(CreativesActions set) { return set.Get(); }
+        public void SetCallbacks(ICreativesActions instance)
+        {
+            if (m_Wrapper.m_CreativesActionsCallbackInterface != null)
+            {
+                @StickParticleLeft.started -= m_Wrapper.m_CreativesActionsCallbackInterface.OnStickParticleLeft;
+                @StickParticleLeft.performed -= m_Wrapper.m_CreativesActionsCallbackInterface.OnStickParticleLeft;
+                @StickParticleLeft.canceled -= m_Wrapper.m_CreativesActionsCallbackInterface.OnStickParticleLeft;
+                @StickParticleRight.started -= m_Wrapper.m_CreativesActionsCallbackInterface.OnStickParticleRight;
+                @StickParticleRight.performed -= m_Wrapper.m_CreativesActionsCallbackInterface.OnStickParticleRight;
+                @StickParticleRight.canceled -= m_Wrapper.m_CreativesActionsCallbackInterface.OnStickParticleRight;
+            }
+            m_Wrapper.m_CreativesActionsCallbackInterface = instance;
+            if (instance != null)
+            {
+                @StickParticleLeft.started += instance.OnStickParticleLeft;
+                @StickParticleLeft.performed += instance.OnStickParticleLeft;
+                @StickParticleLeft.canceled += instance.OnStickParticleLeft;
+                @StickParticleRight.started += instance.OnStickParticleRight;
+                @StickParticleRight.performed += instance.OnStickParticleRight;
+                @StickParticleRight.canceled += instance.OnStickParticleRight;
+            }
+        }
+    }
+    public CreativesActions @Creatives => new CreativesActions(this);
     public interface IOrganizerActions
     {
         void OnMovement(InputAction.CallbackContext context);
@@ -353,5 +446,10 @@ public partial class @PlayerControls : IInputActionCollection2, IDisposable
     public interface IVRPlayerActions
     {
         void OnRecenter(InputAction.CallbackContext context);
+    }
+    public interface ICreativesActions
+    {
+        void OnStickParticleLeft(InputAction.CallbackContext context);
+        void OnStickParticleRight(InputAction.CallbackContext context);
     }
 }

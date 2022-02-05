@@ -418,7 +418,6 @@ MonoBehaviour:
   - {fileID: 4072383028560627435}
   - {fileID: 7526797159945131799}
   recenter: {fileID: 8383906347357435846, guid: d04902f11fe1a35409fd7431259d6667, type: 3}
-  particle: {fileID: 0}
 --- !u!1001 &2898119831380501964
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -620,6 +619,10 @@ PrefabInstance:
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
       objectReference: {fileID: 0}
+    - target: {fileID: 2120381187316385049, guid: 86c73c73ad3f5704993f146ae1fc8513, type: 3}
+      propertyPath: clickForParticle
+      value: 
+      objectReference: {fileID: 2899937783071596778, guid: d04902f11fe1a35409fd7431259d6667, type: 3}
     - target: {fileID: 4633287585953870555, guid: 86c73c73ad3f5704993f146ae1fc8513, type: 3}
       propertyPath: m_Name
       value: VRPlayerHand
