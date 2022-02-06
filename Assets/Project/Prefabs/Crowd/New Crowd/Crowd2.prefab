@@ -9009,6 +9009,7 @@ GameObject:
   m_Component:
   - component: {fileID: 3788985649205068680}
   - component: {fileID: 2718641509317668592}
+  - component: {fileID: -6592037613217072297}
   m_Layer: 0
   m_Name: Crowd2
   m_TagString: Untagged
@@ -9057,10 +9058,25 @@ Animator:
   m_Controller: {fileID: 9100000, guid: 0ab550dbeff7be94392a22e58f5b7cc9, type: 2}
   m_CullingMode: 0
   m_UpdateMode: 0
-  m_ApplyRootMotion: 0
+  m_ApplyRootMotion: 1
   m_LinearVelocityBlending: 0
   m_StabilizeFeet: 0
   m_WarningMessage: 
   m_HasTransformHierarchy: 1
   m_AllowConstantClipSamplingOptimization: 1
   m_KeepAnimatorControllerStateOnDisable: 0
+--- !u!114 &-6592037613217072297
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 3788985649205068687}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: ae42b628511b7c74ea78c414213f850c, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  animator: {fileID: 2718641509317668592}
+  minAnimationTime: 5
+  maxAnimationTime: 30

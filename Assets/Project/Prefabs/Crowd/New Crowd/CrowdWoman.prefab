@@ -2803,6 +2803,8 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 3138363501677879816}
+  - component: {fileID: -8900152751165238352}
+  - component: {fileID: 3018025366332327669}
   m_Layer: 0
   m_Name: CrowdWoman
   m_TagString: Untagged
@@ -2838,6 +2840,41 @@ Transform:
   m_Father: {fileID: 0}
   m_RootOrder: 0
   m_LocalEulerAnglesHint: {x: 0, y: -90, z: 0}
+--- !u!114 &-8900152751165238352
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 2361685377401485490}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: ae42b628511b7c74ea78c414213f850c, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  animator: {fileID: 3018025366332327669}
+  minAnimationTime: 5
+  maxAnimationTime: 30
+--- !u!95 &3018025366332327669
+Animator:
+  serializedVersion: 4
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 2361685377401485490}
+  m_Enabled: 1
+  m_Avatar: {fileID: 9000000, guid: 38f32821cd2efdd41810bd4a74e972ee, type: 3}
+  m_Controller: {fileID: 9100000, guid: 0ab550dbeff7be94392a22e58f5b7cc9, type: 2}
+  m_CullingMode: 0
+  m_UpdateMode: 0
+  m_ApplyRootMotion: 1
+  m_LinearVelocityBlending: 0
+  m_StabilizeFeet: 0
+  m_WarningMessage: 
+  m_HasTransformHierarchy: 1
+  m_AllowConstantClipSamplingOptimization: 1
+  m_KeepAnimatorControllerStateOnDisable: 0
 --- !u!1 &2479622466038328470
 GameObject:
   m_ObjectHideFlags: 0
