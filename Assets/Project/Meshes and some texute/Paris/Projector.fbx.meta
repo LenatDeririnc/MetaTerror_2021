@@ -3,7 +3,17 @@ guid: 899aee1a2ff01674da543bd196a6c836
 ModelImporter:
   serializedVersion: 21202
   internalIDToNameTable: []
-  externalObjects: {}
+  externalObjects:
+  - first:
+      type: UnityEngine:Material
+      assembly: UnityEngine.CoreModule
+      name: Atlas
+    second: {fileID: 2100000, guid: 3a28cb91b77d7c54a95af2d7377c1cd0, type: 2}
+  - first:
+      type: UnityEngine:Material
+      assembly: UnityEngine.CoreModule
+      name: Projector Emi Light
+    second: {fileID: 2100000, guid: adefc58502f8ac44e8e9f5f9784b0010, type: 2}
   materials:
     materialImportMode: 2
     materialName: 0
