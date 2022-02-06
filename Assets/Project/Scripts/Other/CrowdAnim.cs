@@ -16,7 +16,12 @@ public class CrowdAnim : MonoBehaviour
         if (!animator)
         {
             animator = GetComponent<Animator>();
-        } 
+        }
+
+        if (animator.isOptimizable)
+        {
+            AnimatorUtility.OptimizeTransformHierarchy(animator.gameObject, new string[0]);
+        }
         
         animator.SetFloat("Offset", Random.value);
     }
