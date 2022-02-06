@@ -14,6 +14,16 @@ public class ParticleBuilder : MonoBehaviour
         _particleTransform = _particle.transform;
     }
 
+    public void SetPosition(Vector3 position)
+    {
+        _particleTransform.position = position;
+    }
+    
+    public void Play()
+    {
+        _particleSystem.Play();
+    }
+
     public void Play(Vector3 position)
     {
         _particleTransform.position = position;

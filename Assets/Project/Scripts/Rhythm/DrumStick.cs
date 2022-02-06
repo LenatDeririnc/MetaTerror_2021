@@ -13,17 +13,36 @@ public class DrumStick : MonoBehaviour
     public InputActionReference clickForParticle;
     public Transform particlePosition;
 
+    private bool isParticlePlaying = false;
+
     private void Awake()
     {
         lastPosition = tipTransform.position;
 
-        clickForParticle.action.started += _ => particle.Play(particlePosition.position);
-        clickForParticle.action.canceled += _ => particle.Stop();
+        clickForParticle.action.started += _ => OnPlay();
+        clickForParticle.action.canceled += _ => OffPlay();
+    }
+
+    private void OffPlay()
+    {
+        isParticlePlaying = false;
+        particle.Stop();
+    }
+
+    private void OnPlay()
+    {
+        isParticlePlaying = true;
+        particle.Play();
     }
 
     private void Update()
     {
         var newPosition = tipTransform.position;
+
+        if (isParticlePlaying)
+        {
+            particle.SetPosition(particlePosition.position);
+        }
 
         if (RhythmGamePlayer.Instance && Physics.Linecast(lastPosition, newPosition, 
             out var hitInfo, drumLayerMask, QueryTriggerInteraction.Collide))
